@@ -15,7 +15,6 @@ public class Main {
         ViewImage viewImage=new ViewImage();
         viewImage.displayImage(bufferedImage,"Imaginea initiala",bufferedImage.getWidth(),bufferedImage.getHeight());
         List<ImageObject> imageObjectList=imageEncryption.createSquareImagesWithMaximumEdgeLength(bufferedImage);
-        System.out.println("Numarul de imagini="+imageObjectList.size());
         long key = imageEncryption.generateKey(1, 2, 3, 4, 5, 6, 7, 8);
         double[][] diffusionImage = imageEncryption.generateDiffusionImage(key, 0, 0.5, imageObjectList.get(0).getBufferedImage().getHeight(), imageObjectList.get(0).getBufferedImage().getWidth());
         List<Integer> secretKeyForBakerMap = imageEncryption.generateSecretKey(imageObjectList.get(0).getBufferedImage().getWidth());
