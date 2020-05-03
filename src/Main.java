@@ -10,7 +10,7 @@ public class Main {
     public static void main(String args[]) throws Exception {
         ImageEncryption imageEncryption=new ImageEncryption();
         //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth
-        BufferedImage bufferedImage = imageEncryption.readImage(new File("D:/An4/Licenta/TestImages/Flower.png"));
+        BufferedImage bufferedImage = imageEncryption.readImage(new File("D:/An4/Licenta/TestImages/testWidth.png"));
         int originalImageHeight=bufferedImage.getHeight(),originalImageWidth=bufferedImage.getWidth();
         ViewImage viewImage=new ViewImage();
         viewImage.displayImage(bufferedImage,"Imaginea initiala",bufferedImage.getWidth(),bufferedImage.getHeight());
