@@ -1,0 +1,641 @@
+Imagine noua=>widthOfInputImage= 121 heightOfInputImage= 121
+inainte de for=>height= 0 offset= 121
+secretKey=11 11 11 11 11 11 11 11 11 11 11  sum=121
+
+in for la pasul= 10 =>height=10 offset= 110
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=0
+row= 1 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=1
+row= 2 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=2
+row= 3 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=3
+row= 4 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=4
+row= 5 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=5
+row= 6 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=6
+row= 7 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=7
+row= 8 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=8
+row= 9 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=9
+row= 10 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=110 coordYLimita=120 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=10
+row= 11 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 9 =>height=10 offset= 99
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=11
+row= 12 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=12
+row= 13 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=13
+row= 14 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=14
+row= 15 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=15
+row= 16 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=16
+row= 17 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=17
+row= 18 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=18
+row= 19 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=19
+row= 20 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=20
+row= 21 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=99 coordYLimita=109 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=21
+row= 22 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 8 =>height=10 offset= 88
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=22
+row= 23 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=23
+row= 24 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=24
+row= 25 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=25
+row= 26 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=26
+row= 27 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=27
+row= 28 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=28
+row= 29 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=29
+row= 30 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=30
+row= 31 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=31
+row= 32 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=88 coordYLimita=98 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=32
+row= 33 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 7 =>height=10 offset= 77
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=33
+row= 34 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=34
+row= 35 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=35
+row= 36 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=36
+row= 37 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=37
+row= 38 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=38
+row= 39 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=39
+row= 40 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=40
+row= 41 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=41
+row= 42 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=42
+row= 43 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=77 coordYLimita=87 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=43
+row= 44 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 6 =>height=10 offset= 66
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=44
+row= 45 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=45
+row= 46 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=46
+row= 47 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=47
+row= 48 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=48
+row= 49 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=49
+row= 50 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=50
+row= 51 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=51
+row= 52 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=52
+row= 53 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=53
+row= 54 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=66 coordYLimita=76 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=54
+row= 55 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 5 =>height=10 offset= 55
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=55
+row= 56 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=56
+row= 57 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=57
+row= 58 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=58
+row= 59 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=59
+row= 60 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=60
+row= 61 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=61
+row= 62 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=62
+row= 63 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=63
+row= 64 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=64
+row= 65 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=55 coordYLimita=65 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=65
+row= 66 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 4 =>height=10 offset= 44
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=66
+row= 67 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=67
+row= 68 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=68
+row= 69 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=69
+row= 70 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=70
+row= 71 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=71
+row= 72 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=72
+row= 73 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=73
+row= 74 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=74
+row= 75 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=75
+row= 76 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=44 coordYLimita=54 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=76
+row= 77 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 3 =>height=10 offset= 33
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=77
+row= 78 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=78
+row= 79 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=79
+row= 80 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=80
+row= 81 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=81
+row= 82 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=82
+row= 83 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=83
+row= 84 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=84
+row= 85 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=85
+row= 86 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=86
+row= 87 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=33 coordYLimita=43 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=87
+row= 88 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 2 =>height=10 offset= 22
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=88
+row= 89 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=89
+row= 90 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=90
+row= 91 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=91
+row= 92 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=92
+row= 93 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=93
+row= 94 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=94
+row= 95 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=95
+row= 96 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=96
+row= 97 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=97
+row= 98 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=22 coordYLimita=32 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=98
+row= 99 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 1 =>height=10 offset= 11
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=99
+row= 100 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=100
+row= 101 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=101
+row= 102 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=102
+row= 103 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=103
+row= 104 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=104
+row= 105 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=105
+row= 106 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=106
+row= 107 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=107
+row= 108 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=108
+row= 109 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=11 coordYLimita=21 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=109
+row= 110 col=121
+in while=>height=131
+afara din while===========================================
+
+in for la pasul= 0 =>height=10 offset= 0
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=10 coordXLimita=0                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=110
+row= 111 col=121
+in while=>height=21
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=21 coordXLimita=11                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=111
+row= 112 col=121
+in while=>height=32
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=32 coordXLimita=22                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=112
+row= 113 col=121
+in while=>height=43
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=43 coordXLimita=33                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=113
+row= 114 col=121
+in while=>height=54
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=54 coordXLimita=44                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=114
+row= 115 col=121
+in while=>height=65
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=65 coordXLimita=55                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=115
+row= 116 col=121
+in while=>height=76
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=76 coordXLimita=66                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=116
+row= 117 col=121
+in while=>height=87
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=87 coordXLimita=77                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=117
+row= 118 col=121
+in while=>height=98
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=98 coordXLimita=88                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=118
+row= 119 col=121
+in while=>height=109
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=109 coordXLimita=99                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=119
+row= 120 col=121
+in while=>height=120
+inainte de for-ul din while=>inwhileinfor=0 coordY=0 coordYLimita=10 coordX=120 coordXLimita=110                                                                                                                         
+dupa forul din while=>inwhileinfor=121 
+in while pas=120
+row= 121 col=121
+in while=>height=131
+afara din while===========================================
