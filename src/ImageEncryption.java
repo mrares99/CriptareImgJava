@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ImageEncryption {
+public class ImageEncryption extends Thread{
     private int k;
     private int x0;
     private int y0;
@@ -17,6 +17,10 @@ public class ImageEncryption {
     private int x10;
     private int y10;
     private int n11;
+
+    public ImageEncryption(){
+
+    }
 
     public BufferedImage readImage(File path) {//trebuie verificare pt nullPointer(in caz ca nu gaseste imaginea)
         BufferedImage image = null;
@@ -27,40 +31,6 @@ public class ImageEncryption {
         }
         return image;
     }
-
-//    public List<Image> splitImageIntoSquares(BufferedImage bufferedImage) {
-//        List<Image> imageList = new ArrayList<Image>();
-//        BufferedImage auxiliaryFirst = bufferedImage;
-//        int initialHeight = auxiliaryFirst.getHeight(),initialWidth = auxiliaryFirst.getWidth(),coordX = 0, coordY = 0;
-//        boolean finish = false;
-//        while (!finish) {
-//            if (auxiliaryFirst.getWidth() == auxiliaryFirst.getHeight()) {
-//                if (coordX + auxiliaryFirst.getHeight() == initialHeight && coordY + auxiliaryFirst.getWidth() == initialWidth) {
-//                    finish = true;
-//                    //coordX += auxiliaryFirst.getHeight();
-//                    //coordY += auxiliaryFirst.getWidth();
-//                } else if (coordX + auxiliaryFirst.getHeight() == initialHeight && coordY + auxiliaryFirst.getWidth() != initialWidth) {
-//                    finish = true;
-//                    //coordX += auxiliaryFirst.getHeight();
-//                } else if (coordX + auxiliaryFirst.getHeight() != initialHeight && coordY + auxiliaryFirst.getWidth() == initialWidth) {
-//                    finish = true;
-//                   // coordY += auxiliaryFirst.getWidth();
-//                }
-//                imageList.add(new Image(coordX, coordY, auxiliaryFirst.getHeight(), auxiliaryFirst.getWidth(), auxiliaryFirst));
-//            }
-//            if (auxiliaryFirst.getHeight() > auxiliaryFirst.getWidth()) {
-//                imageList.add(new Image(coordX, coordY, auxiliaryFirst.getWidth(), auxiliaryFirst.getWidth(), auxiliaryFirst.getSubimage(0, 0, auxiliaryFirst.getWidth(), auxiliaryFirst.getWidth())));
-//                coordX = coordX + auxiliaryFirst.getWidth();
-//                auxiliaryFirst = auxiliaryFirst.getSubimage(0, auxiliaryFirst.getWidth(), auxiliaryFirst.getWidth(), auxiliaryFirst.getHeight() - auxiliaryFirst.getWidth());
-//            }
-//            if (auxiliaryFirst.getWidth() > auxiliaryFirst.getHeight()) {
-//                imageList.add(new Image(coordX, coordY, auxiliaryFirst.getHeight(), auxiliaryFirst.getHeight(), auxiliaryFirst.getSubimage(0, 0, auxiliaryFirst.getHeight(), auxiliaryFirst.getHeight())));
-//                coordY += auxiliaryFirst.getHeight();
-//                auxiliaryFirst = auxiliaryFirst.getSubimage(auxiliaryFirst.getHeight(), 0, auxiliaryFirst.getWidth() - auxiliaryFirst.getHeight(), auxiliaryFirst.getHeight());
-//            }
-//        }
-//        return imageList;
-//    }
 
     public BufferedImage reconstructImage(List<ImageObject> imageObjectList, int height, int width){
         BufferedImage bufferedImage=new BufferedImage(width, height,1);
@@ -224,101 +194,27 @@ public class ImageEncryption {
         return sequenceGenerated;
     }
 
-    public int[] generateSecretKeyForBakerMap(int inputNumber){
-        int[] secretKey=new int[inputNumber/2+1];
-        int step=0;
-        for(int i=2;i<=inputNumber/2;i++){
-            if(inputNumber%i==0) {
-                secretKey[step++]=i;
-            }
-        }
-        int[] outputSecretKey=new int[step];
-        for(int i=0;i<step;i++){
-            outputSecretKey[i]=secretKey[i];
-        }
-        int[] sequenceGenerated=new int[inputNumber];
-        int altStep=0;
-        Random random=new Random();
-        int pas=0;
-        int sum=0;
-        while(true){
-            int value=outputSecretKey[random.nextInt(step)];
-            if(sum+value==inputNumber){
-                sequenceGenerated[altStep++]=value;
-                break;
-            }
-            else if(sum+value<inputNumber){
-                if(value%2==0){
-                    sequenceGenerated[altStep++]=value;
-                    sum+=value;
-                }
-                if(value%2==1){
-                    if(sum+2*value<inputNumber){
-                        sequenceGenerated[altStep++]=value;
-                        sequenceGenerated[altStep++]=value;
-                        sum+=2*value;
-                    }
-                }
-            }
-            else if(sum+value>inputNumber){
-                continue;
-            }
-        }
-        int[] outputSequenceGenerated=new int[altStep];
-        for(int i=0;i<altStep;i++){
-            outputSequenceGenerated[i]=sequenceGenerated[i];
-        }
-        return outputSequenceGenerated;
-    }
-
-
-
     public double[][] generateBakerMap(double[][] inputImage,int widthOfInputImage,int heightOfInputImage,List<Integer> secretKey) throws IOException {//se imparte in dreptunghiuri,la numar fiind lungimea laturii imaginii
         double[][] outputBakerMap=new double[heightOfInputImage][widthOfInputImage];
-        //FileWriter fileWriter=new FileWriter("Rezultat.txt");
-//        int pas=0,inwhileinfor=0;
         int height=0,offset=widthOfInputImage,row=0,col=0;//offset=widthOfInputImage-secretKey[secretKey.length-1]
-        //fileWriter.write("Imagine noua=>widthOfInputImage= "+widthOfInputImage+" heightOfInputImage= "+heightOfInputImage+"\n");
-        //fileWriter.write("inainte de for=>height= "+height+" offset= "+offset+"\n");
-
-        //fileWriter.write("secretKey=");
         int sum=0;
         for(int i=0;i<secretKey.size();i++){
-//            fileWriter.write(secretKey[i]+" ");
             sum+=secretKey.get(i);
         }
-//        fileWriter.write(" sum="+sum+"\n");
         for(int i=secretKey.size()-1;i>=0;i--){
             height=heightOfInputImage/secretKey.get(i)-1;
             offset-=secretKey.get(i);
-//            fileWriter.write("\n"+"in for la pasul= "+i+" =>height="+height+" offset= "+offset);
             while(height<heightOfInputImage){
                 col=0;
-//                inwhileinfor=0;
-//                for(int coordX=height;coordX>=height-heightOfInputImage/secretKey[i]+1;coordX--){
-//                    for(int coordY=offset;coordY<offset+secretKey[i]-1;coordY++){
-//                        outputBakerMap[row][col++]=inputImage[coordX][coordY];
-//                    }
-//                }
-//                fileWriter.write("\ninainte de for-ul din while=>inwhileinfor="+inwhileinfor+" coordY="+offset+" coordYLimita="+(offset+secretKey[i]-1)+" coordX="+height
-//                +" coordXLimita="+(height-heightOfInputImage/secretKey[i]+1));
-                for(int coordY=offset;coordY<=offset+secretKey.get(i)-1;coordY++){//for(int coordY=offset;coordY<offset+secretKey[i]-1;coordY++){
+                for(int coordY=offset;coordY<=offset+secretKey.get(i)-1;coordY++){
                     for(int coordX=height;coordX>=height-heightOfInputImage/secretKey.get(i)+1;coordX--){
                         outputBakerMap[row][col++] =inputImage[coordX][coordY];
-//                        fileWriter.write(" ");
-//                        inwhileinfor++;
                     }
                 }
-//                fileWriter.write("\ndupa forul din while=>inwhileinfor="+inwhileinfor+" ");
-//                fileWriter.write("\n"+"in while pas="+(pas++));
                 row++;
                 height+=heightOfInputImage/secretKey.get(i);
-//                fileWriter.write("\n"+"row= "+row+" col="+col);
-//                fileWriter.write("\n"+"in while=>height="+height);
             }
-//            fileWriter.write("\nafara din while===========================================\n");
         }
-//        fileWriter.close();
         return outputBakerMap;
     }
 
@@ -346,5 +242,7 @@ public class ImageEncryption {
         }
         return bufferedImage;
     }
+
+
 
 }
