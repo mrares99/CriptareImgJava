@@ -9,14 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 public class ImageEncryption extends Thread{
-    private int k;
-    private int x0;
-    private int y0;
-    private int n1;
-    private int k1;
-    private int x10;
-    private int y10;
-    private int n11;
 
     public ImageEncryption(){
 
