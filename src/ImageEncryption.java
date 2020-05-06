@@ -8,10 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ImageEncryption extends Thread{
+public class ImageEncryption {
+    private int n11;
 
-    public ImageEncryption(){
+    public int getN11() {
+        return n11;
+    }
 
+    public void setN11(int n11) {
+        this.n11 = n11;
     }
 
     public BufferedImage readImage(File path) {//trebuie verificare pt nullPointer(in caz ca nu gaseste imaginea)
@@ -22,18 +27,6 @@ public class ImageEncryption extends Thread{
             System.out.println("Calea spre imagine si/sau numele imaginii este gresit!");
         }
         return image;
-    }
-
-    public BufferedImage reconstructImage(List<ImageObject> imageObjectList, int height, int width){
-        BufferedImage bufferedImage=new BufferedImage(width, height,1);
-        Graphics2D graphics2D=bufferedImage.createGraphics();
-        for(int i = 0; i< imageObjectList.size(); i++) {
-            graphics2D.drawImage(imageObjectList.get(i).getBufferedImage(),
-                    imageObjectList.get(i).getXAxis(), imageObjectList.get(i).getYAxis(),//am schimbat axisX cu Y
-                    imageObjectList.get(i).getWidth(), imageObjectList.get(i).getWidth(),
-                    null);
-        }
-        return bufferedImage;
     }
 
     public List<ImageObject> createSquareImagesWithMaximumEdgeLength(BufferedImage bufferedImage) {
@@ -104,12 +97,14 @@ public class ImageEncryption extends Thread{
     public double[][] generateDCTForImage(BufferedImage inputBufferedImage) throws IOException {
         double [][] outputDCTBufferedImage=new double[inputBufferedImage.getHeight()][inputBufferedImage.getWidth()];
         double alphaP=0,alphaQ=0,sum=0,dct=0;
+        double firstSquare=1/Math.sqrt(inputBufferedImage.getWidth()),secondSquare=Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
+        int result=2*inputBufferedImage.getWidth();
         for(int i=0;i<inputBufferedImage.getHeight();i++){
             for(int j=0;j<inputBufferedImage.getWidth();j++){
-                if(i==0) alphaP= 1/Math.sqrt(inputBufferedImage.getWidth());
-                else alphaP=  Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
-                if(j==0) alphaQ=  1/Math.sqrt(inputBufferedImage.getWidth());
-                else alphaQ=  Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
+                if(i==0) alphaP=firstSquare;//alphaP= 1/Math.sqrt(inputBufferedImage.getWidth());
+                else alphaP=secondSquare;//alphaP=  Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
+                if(j==0) alphaQ=firstSquare;//alphaQ=  1/Math.sqrt(inputBufferedImage.getWidth());
+                else alphaQ=secondSquare;//alphaQ=  Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
                 sum=0;
                 for(int k=0;k<inputBufferedImage.getHeight();k++){
                     for(int w=0;w<inputBufferedImage.getWidth();w++) {
@@ -119,12 +114,16 @@ public class ImageEncryption extends Thread{
                         int green = rgb >>8 & 0xff;
                         int blue = rgb & 0xff;
                         rgb=alpha<<24 | red<<16 | green<<8 | blue;
+//                        dct=rgb*
+//                                Math.cos((Math.PI*(2*k+1)*i)/(result))*
+//                                Math.cos((Math.PI*(2*w+1)*j)/(result));
+                        int valK=k<<1,valW=w<<1;
                         dct=rgb*
-                                Math.cos((Math.PI*(2*k+1)*i)/(2*inputBufferedImage.getWidth()))*
-                                Math.cos((Math.PI*(2*w+1)*j)/(2*inputBufferedImage.getWidth()));
+                                ((Math.cos((Math.PI*((valK+1)*i+(valW+1)*j))/result)+
+                                Math.cos((Math.PI*((valK+1)*i-(valW+1)*j))/result))/2);
+
                         sum+=dct;
                     }
-
                 }
                 outputDCTBufferedImage[i][j]=sum*alphaP*alphaQ;
             }
