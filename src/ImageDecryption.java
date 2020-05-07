@@ -78,28 +78,24 @@ public class ImageDecryption {
 
     public double[][] generateIDCTForImage(double[][] inputBufferedImage,int inputHeight,int inputWeight) throws IOException {
         double [][] outputDCTBufferedImage=new double[inputHeight][inputWeight];
-        double alphaP=0,alphaQ=0,sum=0,dct=0;
-        double firstSquare=1/Math.sqrt(inputWeight),secondSquare=Math.sqrt(2)/Math.sqrt(inputHeight);
-        int result=2*inputWeight;
+        double sum=0,dct=0;
+        double alphaP=0,alphaQ=0;
+        double firstSquare=1/Math.sqrt(inputHeight);
+        double seconSquare=Math.sqrt(2)/Math.sqrt(inputHeight);
+        int result=2*inputHeight;
         for(int i=0;i<inputHeight;i++){
             for(int j=0;j<inputWeight;j++){
-                if(i==0) alphaP=firstSquare;//alphaP= 1/Math.sqrt(inputWeight);
-                else alphaP=secondSquare;//alphaP=  Math.sqrt(2)/Math.sqrt(inputWeight);
-                if(j==0) alphaQ=firstSquare;//alphaQ=  1/Math.sqrt(inputWeight);
-                else alphaQ=secondSquare;//alphaQ=  Math.sqrt(2)/Math.sqrt(inputWeight);
                 sum=0;
                 for(int k=0;k<inputHeight;k++){
                     for(int w=0;w<inputWeight;w++) {
-                        int rgb= (int) inputBufferedImage[k][w];//inputBufferedImage.getRGB(k,w);
-                        int alpha = 0;
-                        int red = rgb >>16 & 0xff;
-                        int green = rgb >>8 & 0xff;
-                        int blue = rgb & 0xff;
-                        rgb=alpha<<24 | red<<16 | green<<8 | blue;
-                        dct=rgb*
-                                Math.cos((Math.PI*(2*k+1)*i)/(result))*
-                                Math.cos((Math.PI*(2*w+1)*j)/(result));
-                        sum=sum+dct*alphaP*alphaQ;
+                        if(k==0) alphaP=firstSquare;
+                        else alphaP=seconSquare;
+                        if(w==0) alphaQ=firstSquare;
+                        else alphaQ=seconSquare;
+
+                        sum=sum+alphaP*alphaQ*inputBufferedImage[k][w]*
+                                Math.cos(((2*i+1)*k*Math.PI)/result)*
+                                Math.cos(((2*j+1)*w*Math.PI)/result);
                     }
                 }
                 outputDCTBufferedImage[i][j]=sum;
@@ -121,7 +117,7 @@ public class ImageDecryption {
     }
 
     public BufferedImage generateBufferedImageFromDoubleValues(double[][] inputImage,int height,int width){
-        BufferedImage bufferedImage=new BufferedImage(width,height,2);
+        BufferedImage bufferedImage=new BufferedImage(width,height,1);
         for(int i=0;i<height;i++){
             for(int j=0;j<width;j++){
                 bufferedImage.setRGB(i,j, (int) inputImage[i][j]);

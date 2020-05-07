@@ -15,10 +15,13 @@ public class ParalelImageDecryption extends Thread {
     private double[][] diffusionImage;
     private double[][] cryptedImages;
     private ImageObject imageObject;
+    private int XAxis;
+    private int YAxis;
 
     public ParalelImageDecryption(String threadName){
         this.threadName=threadName;
         this.imageDecryption=new ImageDecryption();
+        this.imageObject=new ImageObject();
     }
 
     public void run(){
@@ -31,6 +34,10 @@ public class ParalelImageDecryption extends Thread {
             double[][] decryptedImage = imageDecryption.generateIDCTForImage(DCTimage, lengthOfImage, lengthOfImage);
             BufferedImage finalDecriptedImage = imageDecryption.generateBufferedImageFromDoubleValues(decryptedImage, lengthOfImage, lengthOfImage);
             imageObject.setBufferedImage(finalDecriptedImage);
+            imageObject.setXAxis(XAxis);
+            imageObject.setYAxis(YAxis);
+            imageObject.setWidth(lengthOfImage);
+            imageObject.setHeight(lengthOfImage);
             imageObjectList.add(imageObject);
             ViewImage viewImage = new ViewImage();
             viewImage.displayImage(finalDecriptedImage, threadName, lengthOfImage, lengthOfImage);
@@ -44,6 +51,22 @@ public class ParalelImageDecryption extends Thread {
             thread = new Thread (this);
             thread.start ();
         }
+    }
+
+    public int getXAxis() {
+        return XAxis;
+    }
+
+    public void setXAxis(int XAxis) {
+        this.XAxis = XAxis;
+    }
+
+    public int getYAxis() {
+        return YAxis;
+    }
+
+    public void setYAxis(int YAxis) {
+        this.YAxis = YAxis;
     }
 
     public ImageObject getImageObject() {
