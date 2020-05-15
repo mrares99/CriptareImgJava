@@ -1,25 +1,20 @@
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 public class ImageObject {
     private int XAxis;
     private int YAxis;
     private int height;
     private int width;
-    private int originalImageHeight;
-    private int originalImageWidth;
     private BufferedImage bufferedImage;
 
     public ImageObject() {
     }
 
-    public ImageObject(int XAxis, int YAxis, int height, int width, BufferedImage bufferedImage, int originalImageHeight, int originalImageWidth) {
+    public ImageObject(int XAxis, int YAxis, int height, int width, BufferedImage bufferedImage) {
         this.XAxis = XAxis;
         this.YAxis = YAxis;
         this.height = height;
         this.width = width;
-        this.originalImageHeight=originalImageHeight;
-        this.originalImageWidth=originalImageWidth;
         this.bufferedImage = bufferedImage;
     }
 
@@ -61,21 +56,5 @@ public class ImageObject {
 
     public void setBufferedImage(BufferedImage bufferedImage) {
         this.bufferedImage = bufferedImage;
-    }
-
-    public int getOriginalImageHeight() {
-        return originalImageHeight;
-    }
-
-    public void setOriginalImageHeight(int originalImageHeight) {
-        this.originalImageHeight = originalImageHeight;
-    }
-
-    public int getOriginalImageWidth() {
-        return originalImageWidth;
-    }
-
-    public void setOriginalImageWidth(int originalImageWidth) {
-        this.originalImageWidth = originalImageWidth;
     }
 }

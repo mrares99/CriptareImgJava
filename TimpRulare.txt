@@ -1,0 +1,157 @@
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,56600 secunde
+Timpul total pentru decriptare=9,27000 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,56200 secunde
+Timpul total pentru decriptare=9,08400 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,45600 secunde
+Timpul total pentru decriptare=9,28800 secunde 
+ 
+Width imagine=121 Height imagine=285
+Numarul de subimagini este=3 si au latura=121
+Timpul total pentru criptare=15,04500 secunde
+Timpul total pentru decriptare=9,63600 secunde 
+ 
+Width imagine=121 Height imagine=1000
+Numarul de subimagini este=9 si au latura=121
+Timpul total pentru criptare=27,86100 secunde
+Timpul total pentru decriptare=15,31100 secunde 
+ 
+Width imagine=1000 Height imagine=121
+Numarul de subimagini este=9 si au latura=121
+Timpul total pentru criptare=27,13800 secunde
+Timpul total pentru decriptare=15,21400 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=153,32800 secunde
+Timpul total pentru decriptare=126,79000 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,77200 secunde
+Timpul total pentru decriptare=9,18000 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=15,00200 secunde
+Timpul total pentru decriptare=9,31200 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=15,05000 secunde
+Timpul total pentru decriptare=9,37200 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,74200 secunde
+Timpul total pentru decriptare=9,06200 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=15,03400 secunde
+Timpul total pentru decriptare=9,35600 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,53200 secunde
+Timpul total pentru decriptare=9,14400 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,82800 secunde
+Timpul total pentru decriptare=9,42400 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,64100 secunde
+Timpul total pentru decriptare=9,36800 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,43900 secunde
+Timpul total pentru decriptare=11,20500 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,29000 secunde
+Timpul total pentru decriptare=9,01200 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,75800 secunde
+Timpul total pentru decriptare=9,13000 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,70500 secunde
+Timpul total pentru decriptare=8,86200 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,32800 secunde
+Timpul total pentru decriptare=8,82800 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=16,57000 secunde
+Timpul total pentru decriptare=9,03700 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,40100 secunde
+Timpul total pentru decriptare=8,87800 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,27600 secunde
+Timpul total pentru decriptare=8,83900 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,94200 secunde
+Timpul total pentru decriptare=9,08100 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=43,07800 secunde
+Timpul total pentru decriptare=28,04800 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=15,26800 secunde
+Timpul total pentru decriptare=9,24600 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=15,21400 secunde
+Timpul total pentru decriptare=9,41800 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,72200 secunde
+Timpul total pentru decriptare=9,26200 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,60000 secunde
+Timpul total pentru decriptare=9,18900 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=15,33400 secunde
+Timpul total pentru decriptare=9,21300 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=14,75800 secunde
+Timpul total pentru decriptare=8,94700 secunde 
+ 

@@ -1,0 +1,195 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ImageDecryption</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ImageDecryption (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ImageDecryption</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (69/ 69)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.awt.*;
+<i>2</i>&nbsp;import java.awt.image.BufferedImage;
+<i>3</i>&nbsp;import java.io.IOException;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<b class="fc"><i>6</i>&nbsp;public class ImageDecryption {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    public double[][] XORTwoImages(double[][] firstInputImage,double[][] secondInputImage,int height,int width,long n1){
+<b class="fc"><i>9</i>&nbsp;        double[][] outputImage=new double[height][width];</b>
+<b class="fc"><i>10</i>&nbsp;        for(int i=0;i&lt;n1;i++){</b>
+<b class="fc"><i>11</i>&nbsp;            for(int row=0;row&lt;height;row++){</b>
+<b class="fc"><i>12</i>&nbsp;                for(int col=0;col&lt;width;col++){</b>
+<b class="fc"><i>13</i>&nbsp;                    firstInputImage[row][col]=Double.longBitsToDouble(</b>
+<b class="fc"><i>14</i>&nbsp;                            Double.doubleToRawLongBits(firstInputImage[row][col])^</b>
+<b class="fc"><i>15</i>&nbsp;                                    Double.doubleToRawLongBits(secondInputImage[row][col]));</b>
+<b class="fc"><i>16</i>&nbsp;                    outputImage[row][col]=firstInputImage[row][col];</b>
+<i>17</i>&nbsp;                }
+<i>18</i>&nbsp;            }
+<i>19</i>&nbsp;        }
+<b class="fc"><i>20</i>&nbsp;        return outputImage;</b>
+<i>21</i>&nbsp;    }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public double[][] generateBakerMap(double[][] inputImage, int widthOfInputImage, int heightOfInputImage, List&lt;Integer&gt; secretKey) throws IOException {
+<b class="fc"><i>24</i>&nbsp;        double[][] outputBakerMap=new double[heightOfInputImage][widthOfInputImage];</b>
+<b class="fc"><i>25</i>&nbsp;        int height=0,offset=widthOfInputImage,row=0,col=0;</b>
+<b class="fc"><i>26</i>&nbsp;        for(int i=secretKey.size()-1;i&gt;=0;i--){</b>
+<b class="fc"><i>27</i>&nbsp;            int valForSecretKey=secretKey.get(i);</b>
+<b class="fc"><i>28</i>&nbsp;            height=heightOfInputImage/valForSecretKey-1;</b>
+<b class="fc"><i>29</i>&nbsp;            offset-=valForSecretKey;</b>
+<b class="fc"><i>30</i>&nbsp;            while(height&lt;heightOfInputImage){</b>
+<b class="fc"><i>31</i>&nbsp;                col=0;</b>
+<b class="fc"><i>32</i>&nbsp;                for(int coordY=offset;coordY&lt;=offset+valForSecretKey-1;coordY++){</b>
+<b class="fc"><i>33</i>&nbsp;                    for(int coordX=height;coordX&gt;=height-heightOfInputImage/valForSecretKey+1;coordX--){</b>
+<b class="fc"><i>34</i>&nbsp;                        outputBakerMap[row][col++] =inputImage[coordX][coordY];</b>
+<i>35</i>&nbsp;                    }
+<i>36</i>&nbsp;                }
+<b class="fc"><i>37</i>&nbsp;                row++;</b>
+<b class="fc"><i>38</i>&nbsp;                height+=heightOfInputImage/valForSecretKey;</b>
+<i>39</i>&nbsp;            }
+<i>40</i>&nbsp;        }
+<b class="fc"><i>41</i>&nbsp;        return outputBakerMap;</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public double[][] decryptBakerMap(double[][] inputBakerMap,int widthOfInputImage,int heightOfInputImage,List&lt;Integer&gt; secretKey) throws IOException {
+<b class="fc"><i>45</i>&nbsp;        double[][] outputDecryptedBakerMap=new double[heightOfInputImage][widthOfInputImage];</b>
+<b class="fc"><i>46</i>&nbsp;        int row=heightOfInputImage-1,col=0,height=0,offset=0;</b>
+<b class="fc"><i>47</i>&nbsp;        for(int i=0;i&lt;secretKey.size();i++){</b>
+<b class="fc"><i>48</i>&nbsp;            int valForSecretKey=secretKey.get(i);</b>
+<b class="fc"><i>49</i>&nbsp;            height=heightOfInputImage/valForSecretKey;</b>
+<b class="fc"><i>50</i>&nbsp;            int auxiliaryHeightOfImage=heightOfInputImage-1;</b>
+<b class="fc"><i>51</i>&nbsp;            while(auxiliaryHeightOfImage&gt;0){</b>
+<b class="fc"><i>52</i>&nbsp;                col=0;</b>
+<b class="fc"><i>53</i>&nbsp;                for(int coordY=offset;coordY&lt;=offset+valForSecretKey-1;coordY++){</b>
+<b class="fc"><i>54</i>&nbsp;                    for(int coordX=auxiliaryHeightOfImage;coordX&gt;=auxiliaryHeightOfImage-height+1;coordX--){</b>
+<b class="fc"><i>55</i>&nbsp;                        outputDecryptedBakerMap[coordX][coordY]=inputBakerMap[row][col++];</b>
+<i>56</i>&nbsp;                    }
+<i>57</i>&nbsp;                }
+<b class="fc"><i>58</i>&nbsp;                row--;</b>
+<b class="fc"><i>59</i>&nbsp;                auxiliaryHeightOfImage=auxiliaryHeightOfImage-height;</b>
+<i>60</i>&nbsp;            }
+<b class="fc"><i>61</i>&nbsp;            offset+=valForSecretKey;</b>
+<i>62</i>&nbsp;        }
+<b class="fc"><i>63</i>&nbsp;        return  outputDecryptedBakerMap;</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    public double[][] generateIDCTForImage(double[][] inputBufferedImage,int inputHeight,int inputWidth) throws IOException {
+<b class="fc"><i>67</i>&nbsp;        double [][] outputDCTBufferedImage=new double[inputHeight][inputWidth];</b>
+<b class="fc"><i>68</i>&nbsp;        double sum=0,dct=0,alphaP=0,alphaQ=0,firstSquare=1/Math.sqrt(inputHeight),secondSquare=Math.sqrt(2)/Math.sqrt(inputHeight);</b>
+<b class="fc"><i>69</i>&nbsp;        int result=inputHeight&lt;&lt;1;</b>
+<b class="fc"><i>70</i>&nbsp;        for(int i=0;i&lt;inputHeight;i++){</b>
+<b class="fc"><i>71</i>&nbsp;            for(int j=0;j&lt;inputWidth;j++){</b>
+<b class="fc"><i>72</i>&nbsp;                sum=0;</b>
+<b class="fc"><i>73</i>&nbsp;                for(int k=0;k&lt;inputHeight;k++){</b>
+<b class="fc"><i>74</i>&nbsp;                    for(int w=0;w&lt;inputWidth;w++) {</b>
+<b class="fc"><i>75</i>&nbsp;                        if(k==0) alphaP=firstSquare;</b>
+<b class="fc"><i>76</i>&nbsp;                        else alphaP=secondSquare;</b>
+<b class="fc"><i>77</i>&nbsp;                        if(w==0) alphaQ=firstSquare;</b>
+<b class="fc"><i>78</i>&nbsp;                        else alphaQ=secondSquare;</b>
+<b class="fc"><i>79</i>&nbsp;                        int valI=i&lt;&lt;1,valJ=j&lt;&lt;1;</b>
+<b class="fc"><i>80</i>&nbsp;                        sum+=alphaP*alphaQ*inputBufferedImage[k][w]*</b>
+<b class="fc"><i>81</i>&nbsp;                                ((Math.cos((Math.PI*((valI+1)*k+(valJ+1)*w))/result)+</b>
+<b class="fc"><i>82</i>&nbsp;                                Math.cos((Math.PI*((valI+1)*k-(valJ+1)*w)))/result)/2);</b>
+<i>83</i>&nbsp;                    }
+<i>84</i>&nbsp;                }
+<b class="fc"><i>85</i>&nbsp;                outputDCTBufferedImage[i][j]=sum;</b>
+<i>86</i>&nbsp;            }
+<i>87</i>&nbsp;        }
+<b class="fc"><i>88</i>&nbsp;        return outputDCTBufferedImage;</b>
+<i>89</i>&nbsp;    }
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;    public BufferedImage reconstructImage(List&lt;ImageObject&gt; imageObjectList, int height, int width){
+<b class="fc"><i>92</i>&nbsp;        BufferedImage bufferedImage=new BufferedImage(width, height,1);</b>
+<b class="fc"><i>93</i>&nbsp;        Graphics2D graphics2D=bufferedImage.createGraphics();</b>
+<b class="fc"><i>94</i>&nbsp;        for(int i = 0; i&lt; imageObjectList.size(); i++) {</b>
+<b class="fc"><i>95</i>&nbsp;            graphics2D.drawImage(imageObjectList.get(i).getBufferedImage(),</b>
+<b class="fc"><i>96</i>&nbsp;                    imageObjectList.get(i).getXAxis(), imageObjectList.get(i).getYAxis(),</b>
+<b class="fc"><i>97</i>&nbsp;                    imageObjectList.get(i).getWidth(), imageObjectList.get(i).getWidth(), null);</b>
+<i>98</i>&nbsp;        }
+<b class="fc"><i>99</i>&nbsp;        return bufferedImage;</b>
+<i>100</i>&nbsp;    }
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;    public BufferedImage generateBufferedImageFromDoubleValues(double[][] inputImage,int height,int width){
+<b class="fc"><i>103</i>&nbsp;        BufferedImage bufferedImage=new BufferedImage(width,height,1);</b>
+<b class="fc"><i>104</i>&nbsp;        for(int i=0;i&lt;height;i++){</b>
+<b class="fc"><i>105</i>&nbsp;            for(int j=0;j&lt;width;j++){</b>
+<b class="fc"><i>106</i>&nbsp;                bufferedImage.setRGB(i,j, (int) inputImage[i][j]);</b>
+<i>107</i>&nbsp;            }
+<i>108</i>&nbsp;        }
+<b class="fc"><i>109</i>&nbsp;        return bufferedImage;</b>
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-15 10:43</div>
+</div>
+</body>
+</html>

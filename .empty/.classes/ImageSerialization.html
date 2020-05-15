@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ImageSerialization</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ImageSerialization (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ImageSerialization</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import javax.swing.*;
+<i>2</i>&nbsp;import java.awt.*;
+<i>3</i>&nbsp;import java.awt.image.*;
+<i>4</i>&nbsp;import java.io.*;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;public class ImageSerialization implements Serializable {
+<i>7</i>&nbsp;    private BufferedImage bufferedImage;
+<i>8</i>&nbsp;
+<b class="nc"><i>9</i>&nbsp;    public ImageSerialization(BufferedImage bufferedImage){</b>
+<b class="nc"><i>10</i>&nbsp;        this.bufferedImage=bufferedImage;</b>
+<i>11</i>&nbsp;    }
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    public void writeObject(ObjectOutputStream s) throws IOException {
+<b class="nc"><i>14</i>&nbsp;        s.defaultWriteObject();</b>
+<b class="nc"><i>15</i>&nbsp;        ImageIcon imageIcon=new ImageIcon(bufferedImage);</b>
+<b class="nc"><i>16</i>&nbsp;        int w = imageIcon.getIconWidth();</b>
+<b class="nc"><i>17</i>&nbsp;        int h = imageIcon.getIconHeight();</b>
+<b class="nc"><i>18</i>&nbsp;        int[] pixels = bufferedImage != null? new int[w * h] : null;</b>
+<i>19</i>&nbsp;
+<b class="nc"><i>20</i>&nbsp;        if (bufferedImage != null) {</b>
+<i>21</i>&nbsp;            try {
+<b class="nc"><i>22</i>&nbsp;                PixelGrabber pg = new PixelGrabber(bufferedImage, 0, 0, w, h, pixels, 0, w);</b>
+<b class="nc"><i>23</i>&nbsp;                pg.grabPixels();</b>
+<b class="nc"><i>24</i>&nbsp;                if ((pg.getStatus() &amp; ImageObserver.ABORT) != 0) {</b>
+<b class="nc"><i>25</i>&nbsp;                    throw new IOException(&quot;failed to load image contents&quot;);</b>
+<i>26</i>&nbsp;                }
+<i>27</i>&nbsp;            }
+<b class="nc"><i>28</i>&nbsp;            catch (InterruptedException e) {</b>
+<b class="nc"><i>29</i>&nbsp;                throw new IOException(&quot;image load interrupted&quot;);</b>
+<b class="nc"><i>30</i>&nbsp;            }</b>
+<i>31</i>&nbsp;        }
+<b class="nc"><i>32</i>&nbsp;        s.writeInt(w);</b>
+<b class="nc"><i>33</i>&nbsp;        s.writeInt(h);</b>
+<b class="nc"><i>34</i>&nbsp;        s.writeObject(pixels);</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    private void readObject(ObjectInputStream s) throws ClassNotFoundException, IOException {
+<b class="nc"><i>38</i>&nbsp;        s.defaultReadObject();</b>
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;        int w = s.readInt();</b>
+<b class="nc"><i>41</i>&nbsp;        int h = s.readInt();</b>
+<b class="nc"><i>42</i>&nbsp;        int[] pixels = (int[])(s.readObject());</b>
+<i>43</i>&nbsp;
+<b class="nc"><i>44</i>&nbsp;        if (pixels != null) {</b>
+<b class="nc"><i>45</i>&nbsp;            Toolkit tk = Toolkit.getDefaultToolkit();</b>
+<b class="nc"><i>46</i>&nbsp;            ColorModel cm = ColorModel.getRGBdefault();</b>
+<b class="nc"><i>47</i>&nbsp;            bufferedImage = (BufferedImage) tk.createImage(new MemoryImageSource(w, h, cm, pixels, 0, w));</b>
+<i>48</i>&nbsp;        }
+<i>49</i>&nbsp;    }
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-15 10:43</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Main</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Main (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98.1%
+  </span>
+  <span class="absValue">
+    (52/ 53)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.awt.image.*;
+<i>2</i>&nbsp;import java.io.*;
+<i>3</i>&nbsp;import java.nio.file.Files;
+<i>4</i>&nbsp;import java.nio.file.Paths;
+<i>5</i>&nbsp;import java.nio.file.StandardOpenOption;
+<i>6</i>&nbsp;import java.text.DecimalFormat;
+<i>7</i>&nbsp;import java.text.NumberFormat;
+<i>8</i>&nbsp;import java.util.List;
+<i>9</i>&nbsp;import java.util.concurrent.ExecutorService;
+<i>10</i>&nbsp;import java.util.concurrent.Executors;
+<i>11</i>&nbsp;import java.util.concurrent.TimeUnit;
+<i>12</i>&nbsp;
+<b class="nc"><i>13</i>&nbsp;public class Main {</b>
+<i>14</i>&nbsp;    public static void main(String args[]) throws Exception {
+<b class="fc"><i>15</i>&nbsp;        ImageEncryption imageEncryption=new ImageEncryption();</b>
+<b class="fc"><i>16</i>&nbsp;        ImageDecryption imageDecryption=new ImageDecryption();</b>
+<i>17</i>&nbsp;        //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth;testHeightScurt;testHeightScurtUmbrellas
+<b class="fc"><i>18</i>&nbsp;        BufferedImage bufferedImage = imageEncryption.readImage(new File(&quot;D:/An4/Licenta/TestImages/testHeightScurtUmbrellas.png&quot;));</b>
+<b class="fc"><i>19</i>&nbsp;        Files.write(Paths.get(&quot;TimpRulare.txt&quot;),(&quot;Width imagine=&quot;+bufferedImage.getWidth()+&quot; Height imagine=&quot;+bufferedImage.getHeight()+&quot;\n&quot;).getBytes(), StandardOpenOption.APPEND);</b>
+<b class="fc"><i>20</i>&nbsp;        int originalImageHeight=bufferedImage.getHeight(),originalImageWidth=bufferedImage.getWidth();</b>
+<b class="fc"><i>21</i>&nbsp;        ViewImage viewImage=new ViewImage();</b>
+<b class="fc"><i>22</i>&nbsp;        viewImage.displayImage(bufferedImage,&quot;Imaginea initiala&quot;,bufferedImage.getWidth(),bufferedImage.getHeight());</b>
+<b class="fc"><i>23</i>&nbsp;        long startTime=System.currentTimeMillis();</b>
+<b class="fc"><i>24</i>&nbsp;        List&lt;ImageObject&gt; imageObjectList=imageEncryption.createSquareImagesWithMaximumEdgeLength(bufferedImage);</b>
+<b class="fc"><i>25</i>&nbsp;        Files.write(Paths.get(&quot;TimpRulare.txt&quot;),(&quot;Numarul de subimagini este=&quot;+imageObjectList.size()+&quot; si au latura=&quot;+imageObjectList.get(0).getWidth()+&quot;\n&quot;).getBytes(), StandardOpenOption.APPEND);</b>
+<b class="fc"><i>26</i>&nbsp;        int lenghtOfSquareImage=imageObjectList.get(0).getWidth();</b>
+<b class="fc"><i>27</i>&nbsp;        int k=1,x0=2,y0=3,n1=4,k1=5,x10=6,y10=7,n11=8;</b>
+<b class="fc"><i>28</i>&nbsp;        long key = imageEncryption.generateKey(k, x0, y0, n1, k1, x10, y10, n11);</b>
+<b class="fc"><i>29</i>&nbsp;        double mean=0,variance=0.5;</b>
+<b class="fc"><i>30</i>&nbsp;        double[][] diffusionImage = imageEncryption.generateDiffusionImage(key, mean, variance, lenghtOfSquareImage, lenghtOfSquareImage);</b>
+<b class="fc"><i>31</i>&nbsp;        List&lt;Integer&gt; secretKeyForBakerMap = imageEncryption.generateSecretKey(lenghtOfSquareImage);</b>
+<i>32</i>&nbsp;
+<b class="fc"><i>33</i>&nbsp;        ExecutorService executorService=Executors.newFixedThreadPool(imageObjectList.size());</b>
+<i>34</i>&nbsp;
+<b class="fc"><i>35</i>&nbsp;        for(int i=0;i&lt;imageObjectList.size();i++) {</b>
+<b class="fc"><i>36</i>&nbsp;            bufferedImage=imageObjectList.get(i).getBufferedImage();</b>
+<b class="fc"><i>37</i>&nbsp;            ParalelImageEncryption paralelImageEncryption=new ParalelImageEncryption(&quot;Img criptata &quot;+i);</b>
+<b class="fc"><i>38</i>&nbsp;            paralelImageEncryption.setImageObject(imageObjectList.get(i));</b>
+<b class="fc"><i>39</i>&nbsp;            paralelImageEncryption.setSecretKeyForBakerMap(secretKeyForBakerMap);</b>
+<b class="fc"><i>40</i>&nbsp;            paralelImageEncryption.setDiffusionImage(diffusionImage);</b>
+<b class="fc"><i>41</i>&nbsp;            paralelImageEncryption.setKey(key);</b>
+<b class="fc"><i>42</i>&nbsp;            paralelImageEncryption.setLengthOfImage(bufferedImage.getWidth());</b>
+<b class="fc"><i>43</i>&nbsp;            executorService.execute(paralelImageEncryption);</b>
+<i>44</i>&nbsp;        }
+<i>45</i>&nbsp;
+<b class="fc"><i>46</i>&nbsp;        executorService.shutdown();</b>
+<b class="fc"><i>47</i>&nbsp;        executorService.awaitTermination(10,TimeUnit.MINUTES);</b>
+<b class="fc"><i>48</i>&nbsp;        long endTime=System.currentTimeMillis();</b>
+<b class="fc"><i>49</i>&nbsp;        NumberFormat formatter=new DecimalFormat(&quot;#0.00000&quot;);</b>
+<b class="fc"><i>50</i>&nbsp;        Files.write(Paths.get(&quot;TimpRulare.txt&quot;),(&quot;Timpul total pentru criptare=&quot;+formatter.format((endTime-startTime)/1000d)+&quot; secunde\n&quot;).getBytes(), StandardOpenOption.APPEND);</b>
+<b class="fc"><i>51</i>&nbsp;        List&lt;ImageObject&gt; informationForEveryCryptedImage=ParalelImageEncryption.getImageObjectList();</b>
+<b class="fc"><i>52</i>&nbsp;        List&lt;double[][]&gt; cryptedImages=ParalelImageEncryption.getImageDoubleValues();</b>
+<b class="fc"><i>53</i>&nbsp;        executorService= Executors.newFixedThreadPool(cryptedImages.size());</b>
+<b class="fc"><i>54</i>&nbsp;        startTime=System.currentTimeMillis();</b>
+<b class="fc"><i>55</i>&nbsp;        for(int i=0;i&lt;cryptedImages.size();i++){</b>
+<b class="fc"><i>56</i>&nbsp;            ParalelImageDecryption paralelImageDecryption=new ParalelImageDecryption(&quot;Img decriptata &quot;+i);</b>
+<b class="fc"><i>57</i>&nbsp;            paralelImageDecryption.setDiffusionImage(diffusionImage);</b>
+<b class="fc"><i>58</i>&nbsp;            paralelImageDecryption.setKey(key);</b>
+<b class="fc"><i>59</i>&nbsp;            paralelImageDecryption.setCryptedImages(cryptedImages.get(i));</b>
+<b class="fc"><i>60</i>&nbsp;            paralelImageDecryption.setSecretKeyForBakerMap(secretKeyForBakerMap);</b>
+<b class="fc"><i>61</i>&nbsp;            paralelImageDecryption.setXAxis(informationForEveryCryptedImage.get(i).getXAxis());</b>
+<b class="fc"><i>62</i>&nbsp;            paralelImageDecryption.setYAxis(informationForEveryCryptedImage.get(i).getYAxis());</b>
+<i>63</i>&nbsp;            //paralelImageDecryption.setN11(n11);
+<b class="fc"><i>64</i>&nbsp;            paralelImageDecryption.setLengthOfImage(informationForEveryCryptedImage.get(i).getHeight());</b>
+<b class="fc"><i>65</i>&nbsp;            executorService.execute(paralelImageDecryption);</b>
+<i>66</i>&nbsp;        }
+<b class="fc"><i>67</i>&nbsp;        executorService.shutdown();</b>
+<b class="fc"><i>68</i>&nbsp;        executorService.awaitTermination(10,TimeUnit.MINUTES);</b>
+<b class="fc"><i>69</i>&nbsp;        endTime=System.currentTimeMillis();</b>
+<i>70</i>&nbsp;        //System.out.println(&quot;Timpul total de rulare pentru decriptare=&quot;+ formatter.format((endTime-startTime)/1000d)+&quot; secunde&quot;);
+<b class="fc"><i>71</i>&nbsp;        Files.write(Paths.get(&quot;TimpRulare.txt&quot;),(&quot;Timpul total pentru decriptare=&quot;+formatter.format((endTime-startTime)/1000d)+&quot; secunde \n \n&quot;).getBytes(), StandardOpenOption.APPEND);</b>
+<b class="fc"><i>72</i>&nbsp;        BufferedImage finalDecryptedImage= imageDecryption.reconstructImage(informationForEveryCryptedImage,originalImageHeight,originalImageWidth);</b>
+<b class="fc"><i>73</i>&nbsp;        viewImage.displayImage(finalDecryptedImage,&quot;Imaginea decriptata&quot;,finalDecryptedImage.getWidth(),finalDecryptedImage.getHeight());</b>
+<b class="fc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-15 10:43</div>
+</div>
+</body>
+</html>

@@ -1,15 +1,13 @@
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParalelImageDecryption extends Thread {
-    private List<Integer> secretKeyForBakerMap;
-    private long key;
+    private static List<Integer> secretKeyForBakerMap;
+    private static long key;
     private Thread thread;
     private String threadName;
     private int lengthOfImage;
-    private int n11;
     private ImageDecryption imageDecryption;
     private static List<ImageObject> imageObjectList=new ArrayList<ImageObject>();
     private double[][] diffusionImage;
@@ -22,15 +20,14 @@ public class ParalelImageDecryption extends Thread {
         this.threadName=threadName;
         this.imageDecryption=new ImageDecryption();
         this.imageObject=new ImageObject();
+        this.thread=new Thread();
     }
 
     public void run(){
         try {
             double[][] diffusionImageBakerMap = imageDecryption.generateBakerMap(diffusionImage, lengthOfImage, lengthOfImage, secretKeyForBakerMap);
-            double[][] DCTImageBakerMap = imageDecryption.XORTwoImages(cryptedImages, diffusionImageBakerMap, lengthOfImage,
-                    lengthOfImage, n11);
-            double[][] DCTimage = imageDecryption.decryptBakerMap(DCTImageBakerMap, lengthOfImage, lengthOfImage,
-                    secretKeyForBakerMap);
+            double[][] DCTImageBakerMap = imageDecryption.XORTwoImages(cryptedImages, diffusionImageBakerMap, lengthOfImage, lengthOfImage, key%10);
+            double[][] DCTimage = imageDecryption.decryptBakerMap(DCTImageBakerMap, lengthOfImage, lengthOfImage, secretKeyForBakerMap);
             double[][] decryptedImage = imageDecryption.generateIDCTForImage(DCTimage, lengthOfImage, lengthOfImage);
             BufferedImage finalDecriptedImage = imageDecryption.generateBufferedImageFromDoubleValues(decryptedImage, lengthOfImage, lengthOfImage);
             imageObject.setBufferedImage(finalDecriptedImage);
@@ -39,17 +36,8 @@ public class ParalelImageDecryption extends Thread {
             imageObject.setWidth(lengthOfImage);
             imageObject.setHeight(lengthOfImage);
             imageObjectList.add(imageObject);
-            ViewImage viewImage = new ViewImage();
-            viewImage.displayImage(finalDecriptedImage, threadName, lengthOfImage, lengthOfImage);
         }catch (Exception e){
             e.printStackTrace();
-        }
-    }
-
-    public void start () {
-        if (thread == null) {
-            thread = new Thread (this);
-            thread.start ();
         }
     }
 
@@ -107,14 +95,6 @@ public class ParalelImageDecryption extends Thread {
 
     public void setLengthOfImage(int lengthOfImage) {
         this.lengthOfImage = lengthOfImage;
-    }
-
-    public int getN11() {
-        return n11;
-    }
-
-    public void setN11(int n11) {
-        this.n11 = n11;
     }
 
     public ImageDecryption getImageDecryption() {

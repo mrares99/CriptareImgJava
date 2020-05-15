@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ParalelImageDecryption</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ParalelImageDecryption (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ParalelImageDecryption</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (10/ 25)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    61.8%
+  </span>
+  <span class="absValue">
+    (34/ 55)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.awt.image.BufferedImage;
+<i>2</i>&nbsp;import java.util.ArrayList;
+<i>3</i>&nbsp;import java.util.List;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public class ParalelImageDecryption extends Thread {
+<i>6</i>&nbsp;    private static List&lt;Integer&gt; secretKeyForBakerMap;
+<i>7</i>&nbsp;    private static long key;
+<i>8</i>&nbsp;    private Thread thread;
+<i>9</i>&nbsp;    private String threadName;
+<i>10</i>&nbsp;    private int lengthOfImage;
+<i>11</i>&nbsp;    private ImageDecryption imageDecryption;
+<b class="fc"><i>12</i>&nbsp;    private static List&lt;ImageObject&gt; imageObjectList=new ArrayList&lt;ImageObject&gt;();</b>
+<i>13</i>&nbsp;    private double[][] diffusionImage;
+<i>14</i>&nbsp;    private double[][] cryptedImages;
+<i>15</i>&nbsp;    private ImageObject imageObject;
+<i>16</i>&nbsp;    private int XAxis;
+<i>17</i>&nbsp;    private int YAxis;
+<i>18</i>&nbsp;
+<b class="fc"><i>19</i>&nbsp;    public ParalelImageDecryption(String threadName){</b>
+<b class="fc"><i>20</i>&nbsp;        this.threadName=threadName;</b>
+<b class="fc"><i>21</i>&nbsp;        this.imageDecryption=new ImageDecryption();</b>
+<b class="fc"><i>22</i>&nbsp;        this.imageObject=new ImageObject();</b>
+<b class="fc"><i>23</i>&nbsp;        this.thread=new Thread();</b>
+<b class="fc"><i>24</i>&nbsp;    }</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    public void run(){
+<i>27</i>&nbsp;        try {
+<b class="fc"><i>28</i>&nbsp;            double[][] diffusionImageBakerMap = imageDecryption.generateBakerMap(diffusionImage, lengthOfImage, lengthOfImage, secretKeyForBakerMap);</b>
+<b class="fc"><i>29</i>&nbsp;            double[][] DCTImageBakerMap = imageDecryption.XORTwoImages(cryptedImages, diffusionImageBakerMap, lengthOfImage, lengthOfImage, key%10);</b>
+<b class="fc"><i>30</i>&nbsp;            double[][] DCTimage = imageDecryption.decryptBakerMap(DCTImageBakerMap, lengthOfImage, lengthOfImage, secretKeyForBakerMap);</b>
+<b class="fc"><i>31</i>&nbsp;            double[][] decryptedImage = imageDecryption.generateIDCTForImage(DCTimage, lengthOfImage, lengthOfImage);</b>
+<b class="fc"><i>32</i>&nbsp;            BufferedImage finalDecriptedImage = imageDecryption.generateBufferedImageFromDoubleValues(decryptedImage, lengthOfImage, lengthOfImage);</b>
+<b class="fc"><i>33</i>&nbsp;            imageObject.setBufferedImage(finalDecriptedImage);</b>
+<b class="fc"><i>34</i>&nbsp;            imageObject.setXAxis(XAxis);</b>
+<b class="fc"><i>35</i>&nbsp;            imageObject.setYAxis(YAxis);</b>
+<b class="fc"><i>36</i>&nbsp;            imageObject.setWidth(lengthOfImage);</b>
+<b class="fc"><i>37</i>&nbsp;            imageObject.setHeight(lengthOfImage);</b>
+<b class="fc"><i>38</i>&nbsp;            imageObjectList.add(imageObject);</b>
+<b class="nc"><i>39</i>&nbsp;        }catch (Exception e){</b>
+<b class="nc"><i>40</i>&nbsp;            e.printStackTrace();</b>
+<b class="fc"><i>41</i>&nbsp;        }</b>
+<b class="fc"><i>42</i>&nbsp;    }</b>
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public int getXAxis() {
+<b class="nc"><i>45</i>&nbsp;        return XAxis;</b>
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    public void setXAxis(int XAxis) {
+<b class="fc"><i>49</i>&nbsp;        this.XAxis = XAxis;</b>
+<b class="fc"><i>50</i>&nbsp;    }</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    public int getYAxis() {
+<b class="nc"><i>53</i>&nbsp;        return YAxis;</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    public void setYAxis(int YAxis) {
+<b class="fc"><i>57</i>&nbsp;        this.YAxis = YAxis;</b>
+<b class="fc"><i>58</i>&nbsp;    }</b>
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    public ImageObject getImageObject() {
+<b class="nc"><i>61</i>&nbsp;        return imageObject;</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    public void setImageObject(ImageObject imageObject) {
+<b class="nc"><i>65</i>&nbsp;        this.imageObject = imageObject;</b>
+<b class="nc"><i>66</i>&nbsp;    }</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    public List&lt;Integer&gt; getSecretKeyForBakerMap() {
+<b class="nc"><i>69</i>&nbsp;        return secretKeyForBakerMap;</b>
+<i>70</i>&nbsp;    }
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;    public void setSecretKeyForBakerMap(List&lt;Integer&gt; secretKeyForBakerMap) {
+<b class="fc"><i>73</i>&nbsp;        this.secretKeyForBakerMap = secretKeyForBakerMap;</b>
+<b class="fc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    public long getKey() {
+<b class="nc"><i>77</i>&nbsp;        return key;</b>
+<i>78</i>&nbsp;    }
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    public void setKey(long key) {
+<b class="fc"><i>81</i>&nbsp;        this.key = key;</b>
+<b class="fc"><i>82</i>&nbsp;    }</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    public String getThreadName() {
+<b class="nc"><i>85</i>&nbsp;        return threadName;</b>
+<i>86</i>&nbsp;    }
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    public void setThreadName(String threadName) {
+<b class="nc"><i>89</i>&nbsp;        this.threadName = threadName;</b>
+<b class="nc"><i>90</i>&nbsp;    }</b>
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    public int getLengthOfImage() {
+<b class="nc"><i>93</i>&nbsp;        return lengthOfImage;</b>
+<i>94</i>&nbsp;    }
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;    public void setLengthOfImage(int lengthOfImage) {
+<b class="fc"><i>97</i>&nbsp;        this.lengthOfImage = lengthOfImage;</b>
+<b class="fc"><i>98</i>&nbsp;    }</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    public ImageDecryption getImageDecryption() {
+<b class="nc"><i>101</i>&nbsp;        return imageDecryption;</b>
+<i>102</i>&nbsp;    }
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    public void setImageDecryption(ImageDecryption imageDecryption) {
+<b class="nc"><i>105</i>&nbsp;        this.imageDecryption = imageDecryption;</b>
+<b class="nc"><i>106</i>&nbsp;    }</b>
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;    public static List&lt;ImageObject&gt; getImageObjectList() {
+<b class="nc"><i>109</i>&nbsp;        return imageObjectList;</b>
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    public static void setImageObjectList(List&lt;ImageObject&gt; imageObjectList) {
+<b class="nc"><i>113</i>&nbsp;        ParalelImageDecryption.imageObjectList = imageObjectList;</b>
+<b class="nc"><i>114</i>&nbsp;    }</b>
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;    public double[][] getDiffusionImage() {
+<b class="nc"><i>117</i>&nbsp;        return diffusionImage;</b>
+<i>118</i>&nbsp;    }
+<i>119</i>&nbsp;
+<i>120</i>&nbsp;    public void setDiffusionImage(double[][] diffusionImage) {
+<b class="fc"><i>121</i>&nbsp;        this.diffusionImage = diffusionImage;</b>
+<b class="fc"><i>122</i>&nbsp;    }</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    public double[][] getCryptedImages() {
+<b class="nc"><i>125</i>&nbsp;        return cryptedImages;</b>
+<i>126</i>&nbsp;    }
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;    public void setCryptedImages(double[][] cryptedImages) {
+<b class="fc"><i>129</i>&nbsp;        this.cryptedImages = cryptedImages;</b>
+<b class="fc"><i>130</i>&nbsp;    }</b>
+<i>131</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-05-15 10:43</div>
+</div>
+</body>
+</html>

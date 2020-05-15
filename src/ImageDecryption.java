@@ -1,12 +1,9 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
 public class ImageDecryption {
-
 
     public double[][] XORTwoImages(double[][] firstInputImage,double[][] secondInputImage,int height,int width,long n1){
         double[][] outputImage=new double[height][width];
@@ -23,21 +20,22 @@ public class ImageDecryption {
         return outputImage;
     }
 
-    public double[][] generateBakerMap(double[][] inputImage, int widthOfInputImage, int heightOfInputImage, List<Integer> secretKey) throws IOException {//se imparte in dreptunghiuri,la numar fiind lungimea laturii imaginii
+    public double[][] generateBakerMap(double[][] inputImage, int widthOfInputImage, int heightOfInputImage, List<Integer> secretKey) throws IOException {
         double[][] outputBakerMap=new double[heightOfInputImage][widthOfInputImage];
-        int height=0,offset=widthOfInputImage,row=0,col=0;//offset=widthOfInputImage-secretKey[secretKey.length-1]
+        int height=0,offset=widthOfInputImage,row=0,col=0;
         for(int i=secretKey.size()-1;i>=0;i--){
-            height=heightOfInputImage/secretKey.get(i)-1;
-            offset-=secretKey.get(i);
+            int valForSecretKey=secretKey.get(i);
+            height=heightOfInputImage/valForSecretKey-1;
+            offset-=valForSecretKey;
             while(height<heightOfInputImage){
                 col=0;
-                for(int coordY=offset;coordY<=offset+secretKey.get(i)-1;coordY++){
-                    for(int coordX=height;coordX>=height-heightOfInputImage/secretKey.get(i)+1;coordX--){
+                for(int coordY=offset;coordY<=offset+valForSecretKey-1;coordY++){
+                    for(int coordX=height;coordX>=height-heightOfInputImage/valForSecretKey+1;coordX--){
                         outputBakerMap[row][col++] =inputImage[coordX][coordY];
                     }
                 }
                 row++;
-                height+=heightOfInputImage/secretKey.get(i);
+                height+=heightOfInputImage/valForSecretKey;
             }
         }
         return outputBakerMap;
@@ -47,11 +45,12 @@ public class ImageDecryption {
         double[][] outputDecryptedBakerMap=new double[heightOfInputImage][widthOfInputImage];
         int row=heightOfInputImage-1,col=0,height=0,offset=0;
         for(int i=0;i<secretKey.size();i++){
-            height=heightOfInputImage/secretKey.get(i);
+            int valForSecretKey=secretKey.get(i);
+            height=heightOfInputImage/valForSecretKey;
             int auxiliaryHeightOfImage=heightOfInputImage-1;
             while(auxiliaryHeightOfImage>0){
                 col=0;
-                for(int coordY=offset;coordY<=offset+secretKey.get(i)-1;coordY++){
+                for(int coordY=offset;coordY<=offset+valForSecretKey-1;coordY++){
                     for(int coordX=auxiliaryHeightOfImage;coordX>=auxiliaryHeightOfImage-height+1;coordX--){
                         outputDecryptedBakerMap[coordX][coordY]=inputBakerMap[row][col++];
                     }
@@ -59,43 +58,28 @@ public class ImageDecryption {
                 row--;
                 auxiliaryHeightOfImage=auxiliaryHeightOfImage-height;
             }
-            offset+=secretKey.get(i);
+            offset+=valForSecretKey;
         }
         return  outputDecryptedBakerMap;
     }
 
-    public double[][] generateDiffusionImage(long key,double mean,double variance,int height,int width){
-        double[][] diffusionImage=new double[height][width];
-        Random random=new Random();
-        random.setSeed(key);
-        for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){
-                diffusionImage[i][j]=random.nextGaussian()*variance+mean;
-            }
-        }
-        return diffusionImage;
-    }
-
-    public double[][] generateIDCTForImage(double[][] inputBufferedImage,int inputHeight,int inputWeight) throws IOException {
-        double [][] outputDCTBufferedImage=new double[inputHeight][inputWeight];
-        double sum=0,dct=0;
-        double alphaP=0,alphaQ=0;
-        double firstSquare=1/Math.sqrt(inputHeight);
-        double seconSquare=Math.sqrt(2)/Math.sqrt(inputHeight);
-        int result=2*inputHeight;
+    public double[][] generateIDCTForImage(double[][] inputBufferedImage,int inputHeight,int inputWidth) throws IOException {
+        double [][] outputDCTBufferedImage=new double[inputHeight][inputWidth];
+        double sum=0,dct=0,alphaP=0,alphaQ=0,firstSquare=1/Math.sqrt(inputHeight),secondSquare=Math.sqrt(2)/Math.sqrt(inputHeight);
+        int result=inputHeight<<1;
         for(int i=0;i<inputHeight;i++){
-            for(int j=0;j<inputWeight;j++){
+            for(int j=0;j<inputWidth;j++){
                 sum=0;
                 for(int k=0;k<inputHeight;k++){
-                    for(int w=0;w<inputWeight;w++) {
+                    for(int w=0;w<inputWidth;w++) {
                         if(k==0) alphaP=firstSquare;
-                        else alphaP=seconSquare;
+                        else alphaP=secondSquare;
                         if(w==0) alphaQ=firstSquare;
-                        else alphaQ=seconSquare;
-
-                        sum=sum+alphaP*alphaQ*inputBufferedImage[k][w]*
-                                Math.cos(((2*i+1)*k*Math.PI)/result)*
-                                Math.cos(((2*j+1)*w*Math.PI)/result);
+                        else alphaQ=secondSquare;
+                        int valI=i<<1,valJ=j<<1;
+                        sum+=alphaP*alphaQ*inputBufferedImage[k][w]*
+                                ((Math.cos((Math.PI*((valI+1)*k+(valJ+1)*w))/result)+
+                                Math.cos((Math.PI*((valI+1)*k-(valJ+1)*w)))/result)/2);
                     }
                 }
                 outputDCTBufferedImage[i][j]=sum;
@@ -109,9 +93,8 @@ public class ImageDecryption {
         Graphics2D graphics2D=bufferedImage.createGraphics();
         for(int i = 0; i< imageObjectList.size(); i++) {
             graphics2D.drawImage(imageObjectList.get(i).getBufferedImage(),
-                    imageObjectList.get(i).getXAxis(), imageObjectList.get(i).getYAxis(),//am schimbat axisX cu Y
-                    imageObjectList.get(i).getWidth(), imageObjectList.get(i).getWidth(),
-                    null);
+                    imageObjectList.get(i).getXAxis(), imageObjectList.get(i).getYAxis(),
+                    imageObjectList.get(i).getWidth(), imageObjectList.get(i).getWidth(), null);
         }
         return bufferedImage;
     }
