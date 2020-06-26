@@ -11,10 +11,12 @@ public class ParalelImageDecryption extends Thread {
     private ImageDecryption imageDecryption;
     private static List<ImageObject> imageObjectList=new ArrayList<ImageObject>();
     private double[][] diffusionImage;
-    private double[][] cryptedImages;
+    //private double[][] cryptedImages;
+    private BufferedImage cryptedImages;
     private ImageObject imageObject;
     private int XAxis;
     private int YAxis;
+    private static ViewImage viewImage=new ViewImage();
 
     public ParalelImageDecryption(String threadName){
         this.threadName=threadName;
@@ -26,6 +28,7 @@ public class ParalelImageDecryption extends Thread {
     public void run(){
         try {
             double[][] diffusionImageBakerMap = imageDecryption.generateBakerMap(diffusionImage, lengthOfImage, lengthOfImage, secretKeyForBakerMap);
+            viewImage.displayImage(cryptedImages,"img care trebuie decriptata",cryptedImages.getWidth(),cryptedImages.getHeight());
             double[][] DCTImageBakerMap = imageDecryption.XORTwoImages(cryptedImages, diffusionImageBakerMap, lengthOfImage, lengthOfImage, key%10);
             double[][] DCTimage = imageDecryption.decryptBakerMap(DCTImageBakerMap, lengthOfImage, lengthOfImage, secretKeyForBakerMap);
             double[][] decryptedImage = imageDecryption.generateIDCTForImage(DCTimage, lengthOfImage, lengthOfImage);
@@ -121,11 +124,20 @@ public class ParalelImageDecryption extends Thread {
         this.diffusionImage = diffusionImage;
     }
 
-    public double[][] getCryptedImages() {
+//    public double[][] getCryptedImages() {
+//        return cryptedImages;
+//    }
+//
+//    public void setCryptedImages(double[][] cryptedImages) {
+//        this.cryptedImages = cryptedImages;
+//    }
+
+
+    public BufferedImage getCryptedImages() {
         return cryptedImages;
     }
 
-    public void setCryptedImages(double[][] cryptedImages) {
+    public void setCryptedImages(BufferedImage cryptedImages) {
         this.cryptedImages = cryptedImages;
     }
 }

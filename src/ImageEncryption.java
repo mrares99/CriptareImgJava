@@ -3,8 +3,20 @@ import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import org.apache.spark.ml.feature.PolynomialExpansion;
+import org.apache.spark.ml.linalg.VectorUDT;
+import org.apache.spark.ml.linalg.Vectors;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.RowFactory;
+import org.apache.spark.sql.types.Metadata;
+import org.apache.spark.sql.types.StructField;
+import org.apache.spark.sql.types.StructType;
+import org.jtransforms.dct.DoubleDCT_2D;
 
 public class ImageEncryption {
 
@@ -45,39 +57,85 @@ public class ImageEncryption {
         return imageObjectList;
     }
 
-    public double[][] generateDCTForImage(BufferedImage inputBufferedImage) throws IOException {
-        double [][] outputDCTBufferedImage=new double[inputBufferedImage.getHeight()][inputBufferedImage.getWidth()];
-        double alphaP=0,alphaQ=0,sum=0,dct=0;
-        double firstSquare=1/Math.sqrt(inputBufferedImage.getWidth()),secondSquare=Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
-        int lengthOfImage=inputBufferedImage.getWidth();
-        int result=lengthOfImage<<1;
-        for(int i=0;i<lengthOfImage;i++){
-            for(int j=0;j<lengthOfImage;j++){
-                if(i==0) alphaP=firstSquare;
-                else alphaP=secondSquare;
-                if(j==0) alphaQ=firstSquare;
-                else alphaQ=secondSquare;
-                sum=0;
-                for(int k=0;k<lengthOfImage;k++){
-                    for(int w=0;w<lengthOfImage;w++) {
-                        int rgb=inputBufferedImage.getRGB(k,w);
-                        int alpha = 0;
-                        int red = rgb >>16 & 0xff;
-                        int green = rgb >>8 & 0xff;
-                        int blue = rgb & 0xff;
-                        rgb=alpha<<24 | red<<16 | green<<8 | blue;
-                        int valK=k<<1,valW=w<<1;
-                        dct=rgb*
-                                ((Math.cos((Math.PI*((valK+1)*i+(valW+1)*j))/result)+
-                                Math.cos((Math.PI*((valK+1)*i-(valW+1)*j))/result))/2);
-                        sum+=dct;
+    public double[][] generateDCTForImage(BufferedImage bufferedImage){
+        final int width = bufferedImage.getWidth();
+        final int height = bufferedImage.getHeight();
+        DoubleDCT_2D doubleDCT_2D=new DoubleDCT_2D(height, height);
+        double[][] doubleBufferedImage=new double[height][height];
+        final boolean hasAlphaChannel=bufferedImage.getAlphaRaster()!=null;
+        final byte[] pixels = ((DataBufferByte) bufferedImage.getRaster().getDataBuffer()).getData();
+        if (hasAlphaChannel) {//daca imaginea contine parametru pentru transparenta,il elimin;nu lucrez cu imagini cu paratreu de transparenta
+            final int pixelLength = 4;
+            for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel += pixelLength) {
+                int argb = 0;
+                argb += -16777216; //  alpha
+                argb += ((int) pixels[pixel + 1] & 0xff); // albastru
+                argb += (((int) pixels[pixel + 2] & 0xff) << 8); // verde
+                argb += (((int) pixels[pixel + 3] & 0xff) << 16); // rosu
+                doubleBufferedImage[row][col] = (double)argb;
+                col++;
+                if (col == width) {
+                    col = 0;
+                    if(row!=(width-1)) {
+                        row++;
                     }
                 }
-                outputDCTBufferedImage[i][j]=sum*alphaP*alphaQ;
+            }
+        } else {//daca nu are transparenta
+            final int pixelLength = 3;
+            for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel += pixelLength) {
+                int argb = 0;
+                argb += -16777216; //  alpha
+                argb += ((int) pixels[pixel] & 0xff); // albastru
+                argb += (((int) pixels[pixel + 1] & 0xff) << 8); // verde
+                argb += (((int) pixels[pixel + 2] & 0xff) << 16); // rosu
+                doubleBufferedImage[row][col] = (double)argb;
+                col++;
+                if (col == width) {
+                    col = 0;
+                    if(row!=(width-1)) {
+                        row++;
+                    }
+                }
             }
         }
-        return outputDCTBufferedImage;
+        doubleDCT_2D.forward(doubleBufferedImage,false);
+        return doubleBufferedImage;
     }
+
+//    public double[][] generateDCTForImage(BufferedImage inputBufferedImage) throws IOException {
+//        double [][] outputDCTBufferedImage=new double[inputBufferedImage.getHeight()][inputBufferedImage.getWidth()];
+//        double alphaP=0,alphaQ=0,sum=0,dct=0;
+//        double firstSquare=1/Math.sqrt(inputBufferedImage.getWidth()),secondSquare=Math.sqrt(2)/Math.sqrt(inputBufferedImage.getWidth());
+//        int lengthOfImage=inputBufferedImage.getWidth();
+//        int result=lengthOfImage<<1;
+//        for(int i=0;i<lengthOfImage;i++){
+//            for(int j=0;j<lengthOfImage;j++){
+//                if(i==0) alphaP=firstSquare;
+//                else alphaP=secondSquare;
+//                if(j==0) alphaQ=firstSquare;
+//                else alphaQ=secondSquare;
+//                sum=0;
+//                for(int k=0;k<lengthOfImage;k++){
+//                    for(int w=0;w<lengthOfImage;w++) {
+//                        int rgb=inputBufferedImage.getRGB(k,w);
+//                        int alpha = 0;
+//                        int red = rgb >>16 & 0xff;
+//                        int green = rgb >>8 & 0xff;
+//                        int blue = rgb & 0xff;
+//                        rgb=alpha<<24 | red<<16 | green<<8 | blue;
+//                        int valK=k<<1,valW=w<<1;
+//                        dct=rgb*
+//                                ((Math.cos((Math.PI*((valK+1)*i+(valW+1)*j))/result)+
+//                                Math.cos((Math.PI*((valK+1)*i-(valW+1)*j))/result))/2);
+//                        sum+=dct;
+//                    }
+//                }
+//                outputDCTBufferedImage[i][j]=sum*alphaP*alphaQ;
+//            }
+//        }
+//        return outputDCTBufferedImage;
+//    }
 
     public long generateKey(int k,int x0,int y0,int n1,int k1,int x10,int y10,int n11){
         long key=0;

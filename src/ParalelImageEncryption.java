@@ -11,8 +11,10 @@ public class ParalelImageEncryption extends Thread{
     private Thread thread;
     private String threadName;
     private int lengthOfImage;
-    private static List<double[][]> imageDoubleValues=new ArrayList<double[][]>();
+    //private static List<double[][]> imageDoubleValues=new ArrayList<double[][]>();
+    private static List<BufferedImage> imageDoubleValues=new ArrayList<BufferedImage>();
     private static List<ImageObject> imageObjectList=new ArrayList<ImageObject>();
+    private static ViewImage viewImage=new ViewImage();
 
     public ParalelImageEncryption(String threadName){
         this.imageEncryption=new ImageEncryption();
@@ -27,7 +29,8 @@ public class ParalelImageEncryption extends Thread{
             double[][] diffusionImageBakerMap = imageEncryption.generateBakerMap(diffusionImage, lengthOfImage, lengthOfImage, secretKeyForBakerMap);
             double[][] XORedImages = imageEncryption.XORTwoImages(DCTImageBakerMap, diffusionImageBakerMap, lengthOfImage, lengthOfImage, key%10);
             BufferedImage imageEncrypted = imageEncryption.generateBufferedImageFromDoubleValues(XORedImages, lengthOfImage, lengthOfImage);
-            imageDoubleValues.add(XORedImages);
+            imageDoubleValues.add(imageEncrypted);
+            viewImage.displayImage(imageEncrypted,"img criptata",imageEncrypted.getWidth(),imageEncrypted.getHeight());
             imageObjectList.add(imageObject);
         }catch(Exception e){
             e.printStackTrace();
@@ -38,11 +41,20 @@ public class ParalelImageEncryption extends Thread{
         return threadName;
     }
 
-    public static List<double[][]> getImageDoubleValues() {
+//    public static List<double[][]> getImageDoubleValues() {
+//        return imageDoubleValues;
+//    }
+//
+//    public static void setImageDoubleValues(List<double[][]> imageDoubleValues) {
+//        ParalelImageEncryption.imageDoubleValues = imageDoubleValues;
+//    }
+
+
+    public static List<BufferedImage> getImageDoubleValues() {
         return imageDoubleValues;
     }
 
-    public static void setImageDoubleValues(List<double[][]> imageDoubleValues) {
+    public static void setImageDoubleValues(List<BufferedImage> imageDoubleValues) {
         ParalelImageEncryption.imageDoubleValues = imageDoubleValues;
     }
 

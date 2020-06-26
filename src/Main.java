@@ -15,7 +15,7 @@ public class Main {
         ImageEncryption imageEncryption=new ImageEncryption();
         ImageDecryption imageDecryption=new ImageDecryption();
         //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth;testHeightScurt;testHeightScurtUmbrellas
-        BufferedImage bufferedImage = imageEncryption.readImage(new File("D:/An4/Licenta/TestImages/testHeightScurtUmbrellas.png"));
+        BufferedImage bufferedImage = imageEncryption.readImage(new File("D:/An4/Licenta/TestImages/Umbrellas.png"));
         Files.write(Paths.get("TimpRulare.txt"),("Width imagine="+bufferedImage.getWidth()+" Height imagine="+bufferedImage.getHeight()+"\n").getBytes(), StandardOpenOption.APPEND);
         int originalImageHeight=bufferedImage.getHeight(),originalImageWidth=bufferedImage.getWidth();
         ViewImage viewImage=new ViewImage();
@@ -30,6 +30,7 @@ public class Main {
         double[][] diffusionImage = imageEncryption.generateDiffusionImage(key, mean, variance, lenghtOfSquareImage, lenghtOfSquareImage);
         List<Integer> secretKeyForBakerMap = imageEncryption.generateSecretKey(lenghtOfSquareImage);
 
+        List<Integer> test = imageEncryption.generateSecretKey(120);
         ExecutorService executorService=Executors.newFixedThreadPool(imageObjectList.size());
 
         for(int i=0;i<imageObjectList.size();i++) {
@@ -49,7 +50,8 @@ public class Main {
         NumberFormat formatter=new DecimalFormat("#0.00000");
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru criptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
         List<ImageObject> informationForEveryCryptedImage=ParalelImageEncryption.getImageObjectList();
-        List<double[][]> cryptedImages=ParalelImageEncryption.getImageDoubleValues();
+        //List<double[][]> cryptedImages=ParalelImageEncryption.getImageDoubleValues();
+        List<BufferedImage> cryptedImages=ParalelImageEncryption.getImageDoubleValues();
 
         executorService= Executors.newFixedThreadPool(cryptedImages.size());
         startTime=System.currentTimeMillis();
@@ -68,9 +70,9 @@ public class Main {
         executorService.shutdown();
         executorService.awaitTermination(10,TimeUnit.MINUTES);
         endTime=System.currentTimeMillis();
-        //System.out.println("Timpul total de rulare pentru decriptare="+ formatter.format((endTime-startTime)/1000d)+" secunde");
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde \n \n").getBytes(), StandardOpenOption.APPEND);
         BufferedImage finalDecryptedImage= imageDecryption.reconstructImage(informationForEveryCryptedImage,originalImageHeight,originalImageWidth);
         viewImage.displayImage(finalDecryptedImage,"Imaginea decriptata",finalDecryptedImage.getWidth(),finalDecryptedImage.getHeight());
+
     }
 }
