@@ -14,7 +14,6 @@ public class ParalelImageEncryption extends Thread{
     //private static List<double[][]> imageDoubleValues=new ArrayList<double[][]>();
     private static List<BufferedImage> imageDoubleValues=new ArrayList<BufferedImage>();
     private static List<ImageObject> imageObjectList=new ArrayList<ImageObject>();
-    private static ViewImage viewImage=new ViewImage();
 
     public ParalelImageEncryption(String threadName){
         this.imageEncryption=new ImageEncryption();
@@ -30,7 +29,6 @@ public class ParalelImageEncryption extends Thread{
             double[][] XORedImages = imageEncryption.XORTwoImages(DCTImageBakerMap, diffusionImageBakerMap, lengthOfImage, lengthOfImage, key%10);
             BufferedImage imageEncrypted = imageEncryption.generateBufferedImageFromDoubleValues(XORedImages, lengthOfImage, lengthOfImage);
             imageDoubleValues.add(imageEncrypted);
-            viewImage.displayImage(imageEncrypted,"img criptata",imageEncrypted.getWidth(),imageEncrypted.getHeight());
             imageObjectList.add(imageObject);
         }catch(Exception e){
             e.printStackTrace();

@@ -321,3 +321,168 @@ Numarul de subimagini este=2 si au latura=358
 Timpul total pentru criptare=0,39000 secunde
 Timpul total pentru decriptare=0,45300 secunde 
  
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,37100 secunde
+Timpul total pentru decriptare=0,12700 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14500 secunde
+Timpul total pentru decriptare=0,17700 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15000 secunde
+Timpul total pentru decriptare=0,17800 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15000 secunde
+Timpul total pentru decriptare=0,17400 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,17200 secunde
+Timpul total pentru decriptare=0,14100 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14400 secunde
+Timpul total pentru decriptare=0,14100 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15300 secunde
+Timpul total pentru decriptare=0,18800 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,17200 secunde
+Timpul total pentru decriptare=0,16700 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,21800 secunde
+Timpul total pentru decriptare=0,11200 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14100 secunde
+Timpul total pentru decriptare=0,16500 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14800 secunde
+Timpul total pentru decriptare=0,19000 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15300 secunde
+Timpul total pentru decriptare=0,16200 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,12300 secunde
+Timpul total pentru decriptare=0,14700 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14200 secunde
+Timpul total pentru decriptare=0,13500 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,13400 secunde
+Timpul total pentru decriptare=0,13800 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,16200 secunde
+Timpul total pentru decriptare=0,11600 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15600 secunde
+Timpul total pentru decriptare=0,10900 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,12900 secunde
+Timpul total pentru decriptare=0,11700 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14500 secunde
+Timpul total pentru decriptare=0,11000 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,11500 secunde
+Timpul total pentru decriptare=0,09900 secunde 
+ 
+Width imagine=120 Height imagine=285
+Numarul de subimagini este=3 si au latura=120
+Timpul total pentru criptare=0,09800 secunde
+Timpul total pentru decriptare=0,07100 secunde 
+ 
+Width imagine=121 Height imagine=1000
+Numarul de subimagini este=9 si au latura=121
+Timpul total pentru criptare=0,16200 secunde
+Timpul total pentru decriptare=0,14100 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,13300 secunde
+Timpul total pentru decriptare=0,10500 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,12500 secunde
+Timpul total pentru decriptare=0,10900 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,18800 secunde
+Timpul total pentru decriptare=0,14100 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,10900 secunde
+Timpul total pentru decriptare=0,09400 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15600 secunde
+Timpul total pentru decriptare=0,10900 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,12500 secunde
+Timpul total pentru decriptare=0,11000 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14000 secunde
+Timpul total pentru decriptare=0,10900 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,14800 secunde
+Timpul total pentru decriptare=0,12500 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,15600 secunde
+Timpul total pentru decriptare=0,14000 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,10900 secunde
+Timpul total pentru decriptare=0,12500 secunde 
+ 
+Width imagine=220 Height imagine=220
+Numarul de subimagini este=1 si au latura=220
+Timpul total pentru criptare=0,10900 secunde
+Timpul total pentru decriptare=0,10900 secunde 
+ 

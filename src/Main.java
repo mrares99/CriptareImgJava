@@ -15,7 +15,7 @@ public class Main {
         ImageEncryption imageEncryption=new ImageEncryption();
         ImageDecryption imageDecryption=new ImageDecryption();
         //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth;testHeightScurt;testHeightScurtUmbrellas
-        BufferedImage bufferedImage = imageEncryption.readImage(new File("D:/An4/Licenta/TestImages/Umbrellas.png"));
+        BufferedImage bufferedImage = imageEncryption.readImage(new File("D:/An4/Licenta/TestImages/Lenna.png"));
         Files.write(Paths.get("TimpRulare.txt"),("Width imagine="+bufferedImage.getWidth()+" Height imagine="+bufferedImage.getHeight()+"\n").getBytes(), StandardOpenOption.APPEND);
         int originalImageHeight=bufferedImage.getHeight(),originalImageWidth=bufferedImage.getWidth();
         ViewImage viewImage=new ViewImage();
@@ -30,7 +30,6 @@ public class Main {
         double[][] diffusionImage = imageEncryption.generateDiffusionImage(key, mean, variance, lenghtOfSquareImage, lenghtOfSquareImage);
         List<Integer> secretKeyForBakerMap = imageEncryption.generateSecretKey(lenghtOfSquareImage);
 
-        List<Integer> test = imageEncryption.generateSecretKey(120);
         ExecutorService executorService=Executors.newFixedThreadPool(imageObjectList.size());
 
         for(int i=0;i<imageObjectList.size();i++) {
@@ -53,8 +52,13 @@ public class Main {
         //List<double[][]> cryptedImages=ParalelImageEncryption.getImageDoubleValues();
         List<BufferedImage> cryptedImages=ParalelImageEncryption.getImageDoubleValues();
 
+//        for(int i=0;i<cryptedImages.size();i++){
+//            viewImage.displayImage(cryptedImages.get(i),"imgCriptataDinList",cryptedImages.get(i).getWidth(),cryptedImages.get(i).getHeight());
+//        }
+
         executorService= Executors.newFixedThreadPool(cryptedImages.size());
         startTime=System.currentTimeMillis();
+
         for(int i=0;i<cryptedImages.size();i++){
             ParalelImageDecryption paralelImageDecryption=new ParalelImageDecryption("Img decriptata "+i);
             paralelImageDecryption.setDiffusionImage(diffusionImage);
@@ -71,6 +75,7 @@ public class Main {
         executorService.awaitTermination(10,TimeUnit.MINUTES);
         endTime=System.currentTimeMillis();
         Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde \n \n").getBytes(), StandardOpenOption.APPEND);
+        informationForEveryCryptedImage=ParalelImageDecryption.getImageObjectList();
         BufferedImage finalDecryptedImage= imageDecryption.reconstructImage(informationForEveryCryptedImage,originalImageHeight,originalImageWidth);
         viewImage.displayImage(finalDecryptedImage,"Imaginea decriptata",finalDecryptedImage.getWidth(),finalDecryptedImage.getHeight());
 
