@@ -1,9 +1,6 @@
 package good;
 
-import com.esotericsoftware.kryo.util.DefaultClassResolver;
-import org.jtransforms.dct.DoubleDCT_2D;
-import water.util.MathUtils;
-
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,9 +14,6 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -29,7 +23,8 @@ public class Main {
         ViewImage viewImage=new ViewImage();
         //Flower;Flower2;Flower3;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas;testHeight;testWidth;testHeightScurt;testHeightScurtUmbrellas;1PixelHeight
         //2height4width;5height10width
-        BufferedImage inputBufferedImage = imageOperations.readImage(new File("D:/An4/Licenta/TestImages/Lenna.png"));
+//        BufferedImage inputBufferedImage = imageOperations.readImage(new File("D:/An4/Licenta/TestImages/Lenna.png"));
+        BufferedImage inputBufferedImage = imageOperations.readImage();
         int width=inputBufferedImage.getWidth(), height=inputBufferedImage.getHeight();
         viewImage.displayImage(inputBufferedImage,"Original",width,height);
 
@@ -62,7 +57,7 @@ public class Main {
         diffusionImage=encryption.XORTwoImages(DCTImage,diffusionImage,height,width,n1);
         //afisarea imaginii criptate
         BufferedImage encryptedImage=encryption.generateBufferedImageFromDoubleValues(diffusionImage,height,width);
-        viewImage.displayImage(encryptedImage,"encryptedImage",width,height);
+        viewImage.displayImage(encryptedImage,"encrypted",width,height);
 
         //terminare criptare
 
@@ -94,13 +89,19 @@ public class Main {
         //creez IDCT
         DCTImage=decryption.createIDCTofImage(DCTImage,height,width);
         BufferedImage decryptedImage=decryption.generateBufferedImageFromDoubleValues(DCTImage,height,width);
-        viewImage.displayImage(decryptedImage,"decryptedImage",width,height);
+        viewImage.displayImage(decryptedImage,"decrypted",width,height);
 
         //terminare decriptare
 
         endTime=System.currentTimeMillis();
         formatter=new DecimalFormat("#0.00000");
-        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru criptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
+
+
+
+
+
+
 
 
 

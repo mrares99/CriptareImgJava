@@ -3,12 +3,10 @@ package good;
 import org.jtransforms.dct.DoubleDCT_2D;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Decryption {
 
@@ -17,7 +15,7 @@ public class Decryption {
         double[][] result=new double[height][width];
         for(int i=-1;++i<height;){
             for(int j=-1;++j<width;){
-                result[i][j]=bufferedImage.getRGB(j,i) & 0x00ffffff;//elimin componenta alfa
+                result[i][j]=bufferedImage.getRGB(j,i);//elimin componenta alfa
             }
         }
         return result;
@@ -28,44 +26,22 @@ public class Decryption {
         return image;
     }
 
-//    public double[][] decryptBakerMap(double[][] inputBakerMap, int widthOfInputImage, int heightOfInputImage, List<Integer> secretKey) throws IOException {
-//        double[][] outputDecryptedBakerMap=new double[heightOfInputImage][widthOfInputImage];
-//        int row=heightOfInputImage-1,col=0,height=0,offset=0;
-//        for(int i=0;i<secretKey.size();i++){
-//            int valForSecretKey=secretKey.get(i);
-//            height=heightOfInputImage/valForSecretKey;
-//            int auxiliaryHeightOfImage=heightOfInputImage-1;
-//            while(auxiliaryHeightOfImage>0){
-//                col=0;
-//                for(int coordY=offset;coordY<=offset+valForSecretKey-1;coordY++){
-//                    for(int coordX=auxiliaryHeightOfImage;coordX>=auxiliaryHeightOfImage-height+1;coordX--){
-//                        outputDecryptedBakerMap[coordX][coordY]=inputBakerMap[row][col++];
-//                    }
-//                }
-//                row--;
-//                auxiliaryHeightOfImage=auxiliaryHeightOfImage-height;
-//            }
-//            offset+=valForSecretKey;
-//        }
-//        return  outputDecryptedBakerMap;
-//    }
-
-    public double[][] generateDiffusionImage(long key,double mean,double variance,int height,int width){
+    public double[][] generateDiffusionImage(long key,double mean,double variance,int height,int width) throws NoSuchAlgorithmException {
         double[][] diffusionImage=new double[height][width];
-        Random random=new Random();
+        SecureRandom random = SecureRandom.getInstance("SHA1PRNG") ;
         random.setSeed(key);
-        for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){
+        for(int i=-1;++i<height;){
+            for(int j=-1;++j<width;){
                 diffusionImage[i][j]=random.nextGaussian()*variance+mean;
             }
         }
         return diffusionImage;
     }
 
-    public double[][] decryptBakerMap(double[][] inputBakerMap,int widthOfInputImage,int heightOfInputImage,List<Integer> secretKey) throws IOException {
+    public double[][] decryptBakerMap(double[][] inputBakerMap,int widthOfInputImage,int heightOfInputImage,List<Integer> secretKey) {
         double[][] outputDecryptedBakerMap=new double[heightOfInputImage][widthOfInputImage];
-        int row=heightOfInputImage-1,col=0,height=0,offset=0;
-        for(int i=0;i<secretKey.size();i++){
+        int row=heightOfInputImage-1,col,height,offset=0;
+        for(int i=-1;++i<secretKey.size();){
             int valForSecretKey=secretKey.get(i);
             height=heightOfInputImage/valForSecretKey;
             int auxiliaryHeightOfImage=heightOfInputImage-1;
@@ -86,8 +62,8 @@ public class Decryption {
     }
 
     public List<Integer> generateSecretKey(int inputNumber) throws NoSuchAlgorithmException {
-        List<Integer> outputSecretKey=new ArrayList<Integer>();
-        List<Integer> sequenceGenerated=new ArrayList<Integer>();
+        List<Integer> outputSecretKey=new ArrayList<>();
+        List<Integer> sequenceGenerated=new ArrayList<>();
         for(int i=2;i<=inputNumber/2+1;i++){
             if(inputNumber%i==0){
                 outputSecretKey.add(i);
@@ -115,26 +91,23 @@ public class Decryption {
                     }
                 }
             }
-            else if(sum+value>inputNumber){
-                continue;
-            }
         }
         return sequenceGenerated;
     }
 
     public BufferedImage generateBufferedImageFromDoubleValues(double[][] inputImage,int height,int width){
         BufferedImage bufferedImage=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
-        for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){
+        for(int i=-1;++i<height;){
+            for(int j=-1;++j<width;){
                 bufferedImage.setRGB(i,j, (int) inputImage[i][j]);
             }
         }
         return bufferedImage;
     }
 
-    public double[][] generateBakerMap(double[][] inputImage,int widthOfInputImage,int heightOfInputImage,List<Integer> secretKey) throws IOException {
+    public double[][] generateBakerMap(double[][] inputImage,int widthOfInputImage,int heightOfInputImage,List<Integer> secretKey) {
         double[][] outputBakerMap=new double[heightOfInputImage][widthOfInputImage];
-        int height=0,offset=widthOfInputImage,row=0,col=0;
+        int height,offset=widthOfInputImage,row=0,col;
         for(int i=secretKey.size()-1;i>=0;i--){
             int valForSecretKey=secretKey.get(i);
             height=heightOfInputImage/valForSecretKey-1;
@@ -156,9 +129,9 @@ public class Decryption {
 
     public double[][] XORTwoImages(double[][] firstInputImage,double[][] secondInputImage,int height,int width,long n1){
         double[][] outputImage=new double[height][width];
-        for(int i=0;i<n1;i++){
-            for(int row=0;row<height;row++){
-                for(int col=0;col<width;col++){
+        for(int i=-1;++i<n1;){
+            for(int row=-1;++row<height;){
+                for(int col=-1;++col<width;){
                     firstInputImage[row][col]=Double.longBitsToDouble(
                             Double.doubleToRawLongBits(firstInputImage[row][col])^
                                     Double.doubleToRawLongBits(secondInputImage[row][col]));
