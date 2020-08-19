@@ -13,19 +13,20 @@ public class ImageOperations {
         chooser.setCurrentDirectory(new java.io.File("."));
         chooser.setDialogTitle("choosertitle");
         chooser.setAcceptAllFileFilterUsed(false);
-        File path = null;
-
+        File path;
+        BufferedImage image = null;
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             path=chooser.getSelectedFile();
+            try {
+                image = ImageIO.read(path);
+            } catch (IOException e) {
+                System.out.println("Calea spre imagine si/sau numele imaginii este gresit!");
+            }
         } else {
             path= new File("Wrong path");
         }
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(path);
-        } catch (IOException e) {
-            System.out.println("Calea spre imagine si/sau numele imaginii este gresit!");
-        }
+
+
         return image;
     }
 

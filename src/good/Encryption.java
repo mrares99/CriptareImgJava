@@ -15,7 +15,7 @@ public class Encryption {
         double[][] result=new double[height][width];
         for(int i=-1;++i<height;){
             for(int j=-1;++j<width;){
-                result[i][j]=bufferedImage.getRGB(j,i);
+                result[i][j]=bufferedImage.getRGB(i,j);
             }
         }
         return result;
@@ -23,6 +23,11 @@ public class Encryption {
 
     public double[][] createDCTofImage(double[][] image,int height,int width){
         new DoubleDCT_2D(height,width).forward(image,false);
+        return image;
+    }
+
+    public double[][] createIDCTofImage(double[][] image,int height,int width){
+        new DoubleDCT_2D(height,width).inverse(image,false);
         return image;
     }
 
@@ -102,11 +107,27 @@ public class Encryption {
         BufferedImage bufferedImage=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         for(int i=-1;++i<height;){
             for(int j=-1;++j<width;){
-                bufferedImage.setRGB(i,j, (int) inputImage[i][j]);
+                if(i==0 && j==1) System.out.println("val din img double(0,1)="+inputImage[0][1]+
+                        " dupa convertire="+(int)Math.round(inputImage[0][1]));
+                int val= (int) Math.round(inputImage[i][j]);
+                if(i==0 && j==1) System.out.println("in fct(0,1)="+val);
+                bufferedImage.setRGB(i,j, val);
             }
         }
+        System.out.println("in fct; img(0,1)="+bufferedImage.getRGB(0,1)+" img(1,0)="+bufferedImage.getRGB(1,0));
         return bufferedImage;
     }
+
+
+//    public BufferedImage generateBufferedImageFromDoubleValues(double[][] inputImage,int height,int width){
+//        BufferedImage bufferedImage=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+//        for(int i=-1;++i<height;){
+//            for(int j=-1;++j<width;){
+//                bufferedImage.setRGB(i,j, (int) inputImage[i][j]);
+//            }
+//        }
+//        return bufferedImage;
+//    }
 
     public double[][] XORTwoImages(double[][] firstInputImage,double[][] secondInputImage,int height,int width,long n1){
         double[][] outputImage=new double[height][width];

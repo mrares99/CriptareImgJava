@@ -15,7 +15,7 @@ public class Decryption {
         double[][] result=new double[height][width];
         for(int i=-1;++i<height;){
             for(int j=-1;++j<width;){
-                result[i][j]=bufferedImage.getRGB(j,i);//elimin componenta alfa
+                result[i][j]=bufferedImage.getRGB(i,j);//elimin componenta alfa
             }
         }
         return result;
