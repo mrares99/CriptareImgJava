@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fb3dd58e-acd8-4fd7-8dac-014155ff5444" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimpRulare.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TimpRulare.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CriptareImgJava/good/Decryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImgJava/good/Decryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CriptareImgJava/good/Encryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImgJava/good/Encryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CriptareImgJava/good/ImageOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImgJava/good/ImageOperations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CriptareImgJava/good/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CriptareImgJava/good/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/good/Decryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/good/Decryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/good/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/good/Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/good/ImageOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/good/ImageOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/good/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/good/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
