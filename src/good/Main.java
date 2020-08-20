@@ -99,49 +99,46 @@ public class Main {
 
 
 
-        double value=9.803402725149393e10;
-        int conv=(int)value;
-        System.out.println("double to int="+conv);
+//        double value=9.803402725149393e10;
+//        int conv=(int)value;
+//        System.out.println("double to int="+conv);
+//
+//
+//        DoubleDCT_2D doubleDCT_2D=new DoubleDCT_2D(height,width);
+//
+//        Encryption encryption=new Encryption();
+//        List<Integer> secretKeyForBakerMap = encryption.generateSecretKey(width);
+//        System.out.println("buffered image in main="+inputBufferedImage.getRGB(0,1)+" "+inputBufferedImage.getRGB(1,0));
+//        double[][] imageDouble=encryption.imageToDouble(inputBufferedImage);
+//        System.out.println("inainte de dct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
+//        imageDouble=encryption.createDCTofImage(imageDouble,height,width);
+//        System.out.println("dct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
+//
+//        System.out.println("dct to int in main="+(int)imageDouble[0][1]);
+//
+//        BufferedImage encryptedImage=encryption.generateBufferedImageFromDoubleValues(imageDouble,height,width);
+//
+//        System.out.println("encrypted in main="+encryptedImage.getRGB(0,1)+" "+encryptedImage.getRGB(1,0));
+//
+//        viewImage.displayImage(encryptedImage,"encryptedImage",width,height);
+//
+//
+//
+//        System.out.println("\n================== de aici e decriptarea====================\n");
+//
+//
+//
+//        Decryption decryption=new Decryption();
+//        System.out.println("encryptedImage in main="+encryptedImage.getRGB(0,1)+" "+encryptedImage.getRGB(1,0));
+//        imageDouble=decryption.imageToDouble(encryptedImage);
+//        System.out.println("inainte de idct in main=(0,1)"+imageDouble[0][1]+"   (1,0)="+imageDouble[1][0]);
+//        imageDouble=decryption.createIDCTofImage(imageDouble,height,width);
+//        System.out.println("idct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
+//        BufferedImage decryptedImage=decryption.generateBufferedImageFromDoubleValues(imageDouble,height,width);
+//        System.out.println("decryptedImage in main="+decryptedImage.getRGB(0,1)+" "+decryptedImage.getRGB(1,0));
+//        viewImage.displayImage(decryptedImage,"decryptedImage",width,height);
 
-
-        DoubleDCT_2D doubleDCT_2D=new DoubleDCT_2D(height,width);
-
-        Encryption encryption=new Encryption();
-        List<Integer> secretKeyForBakerMap = encryption.generateSecretKey(width);
-        System.out.println("buffered image in main="+inputBufferedImage.getRGB(0,1)+" "+inputBufferedImage.getRGB(1,0));
-        double[][] imageDouble=encryption.imageToDouble(inputBufferedImage);
-        System.out.println("inainte de dct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
-        imageDouble=encryption.createDCTofImage(imageDouble,height,width);
-        System.out.println("dct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
-
-        System.out.println("dct to int in main="+(int)imageDouble[0][1]);
-
-        BufferedImage encryptedImage=encryption.generateBufferedImageFromDoubleValues(imageDouble,height,width);
-
-        System.out.println("encrypted in main="+encryptedImage.getRGB(0,1)+" "+encryptedImage.getRGB(1,0));
-
-        viewImage.displayImage(encryptedImage,"encryptedImage",width,height);
-
-
-
-        System.out.println("\n================== de aici e decriptarea====================\n");
-
-
-
-        Decryption decryption=new Decryption();
-        System.out.println("encryptedImage in main="+encryptedImage.getRGB(0,1)+" "+encryptedImage.getRGB(1,0));
-        imageDouble=decryption.imageToDouble(encryptedImage);
-        System.out.println("inainte de idct in main=(0,1)"+imageDouble[0][1]+"   (1,0)="+imageDouble[1][0]);
-        imageDouble=decryption.createIDCTofImage(imageDouble,height,width);
-        System.out.println("idct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
-        BufferedImage decryptedImage=decryption.generateBufferedImageFromDoubleValues(imageDouble,height,width);
-        System.out.println("decryptedImage in main="+decryptedImage.getRGB(0,1)+" "+decryptedImage.getRGB(1,0));
-        viewImage.displayImage(decryptedImage,"decryptedImage",width,height);
-
-
-
-
-
+        
 
     }
 
