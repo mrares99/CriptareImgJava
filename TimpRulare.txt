@@ -364,3 +364,435 @@ Width imagine=220 Height imagine=220
 
 Date=2020/08/19 18:20:17
 Width imagine=220 Height imagine=220
+
+Date=2020/08/24 11:48:48
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 11:49:27
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 11:55:52
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 11:56:05
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:01:15
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:02:44
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:03:04
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:03:22
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:03:45
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:07:14
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:07:38
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:07:50
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:08:01
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:08:41
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:08:52
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:09:16
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:10:16
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:10:28
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:10:54
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:11:10
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:18:45
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:19:34
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:41:54
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:43:21
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:45:57
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:46:32
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:47:20
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:47:47
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:54:36
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 12:55:20
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:14:30
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:15:24
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:15:43
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:16:05
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:16:53
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:17:26
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:21:09
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:24:03
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:26:14
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:27:11
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:27:32
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:27:51
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:28:05
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:28:19
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:28:48
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:29:23
+Width imagine=300 Height imagine=389
+
+Date=2020/08/24 15:29:39
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:29:45
+Width imagine=300 Height imagine=389
+
+Date=2020/08/24 15:30:12
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:30:18
+Width imagine=300 Height imagine=389
+
+Date=2020/08/24 15:30:51
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:31:05
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:31:23
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:31:37
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:32:00
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:32:13
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:32:21
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:33:09
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:33:15
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:33:22
+Width imagine=300 Height imagine=389
+
+Date=2020/08/24 15:33:42
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:34:06
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:35:56
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:36:16
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:37:13
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:38:43
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:39:07
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:39:14
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:39:28
+Width imagine=300 Height imagine=389
+
+Date=2020/08/24 15:41:01
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:45:41
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:46:31
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:47:07
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:47:46
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:49:07
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:49:51
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:50:59
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:51:23
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:51:48
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:51:58
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 15:53:04
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 15:53:20
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:23:24
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:25:01
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:26:37
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:28:55
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:31:03
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:31:23
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:31:33
+Width imagine=220 Height imagine=220
+
+Date=2020/08/24 20:32:14
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:37:46
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:38:13
+Width imagine=612 Height imagine=408
+
+Date=2020/08/24 20:39:58
+Width imagine=612 Height imagine=408
+
+Date=2020/08/25 08:51:59
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:52:34
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:54:23
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:55:40
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:56:03
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:56:50
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:57:13
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:57:36
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:58:33
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 08:59:40
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:19:12
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:23:34
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:24:03
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:24:23
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:24:41
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:24:57
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:28:12
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:30:31
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:30:41
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:31:39
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:31:55
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:37:21
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 09:37:54
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:27:10
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:27:35
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:27:56
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:28:37
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:29:15
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:31:10
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:31:49
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:32:40
+Width imagine=220 Height imagine=220
+
+Date=2020/08/25 13:34:42
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03000 secunde
+Timpul total pentru criptare=0,02300 secunde
+
+Date=2020/08/25 13:35:10
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,02800 secunde
+Timpul total pentru decriptare=0,01800 secunde
+
+Date=2020/08/25 13:43:21
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03700 secunde
+Timpul total pentru decriptare=0,01800 secunde
+
+Date=2020/08/25 13:43:29
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03800 secunde
+Timpul total pentru decriptare=0,01900 secunde
+
+Date=2020/08/25 13:44:02
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03300 secunde
+Timpul total pentru decriptare=0,01700 secunde
+
+Date=2020/08/25 13:44:12
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03200 secunde
+Timpul total pentru decriptare=0,02500 secunde
+
+Date=2020/08/25 13:44:22
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03400 secunde
+Timpul total pentru decriptare=0,03300 secunde
+
+Date=2020/08/25 13:49:17
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03400 secunde
+Timpul total pentru decriptare=0,01800 secunde
+
+Date=2020/08/25 13:50:21
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03900 secunde
+Timpul total pentru decriptare=0,02100 secunde
+
+Date=2020/08/25 13:50:47
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,02800 secunde
+Timpul total pentru decriptare=0,01600 secunde
+
+Date=2020/08/25 13:53:12
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03100 secunde
+Timpul total pentru decriptare=0,01800 secunde
+
+Date=2020/08/25 13:55:16
+Width imagine=1024 Height imagine=1024
+Timpul total pentru criptare=0,19400 secunde
+Timpul total pentru decriptare=0,19800 secunde

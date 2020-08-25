@@ -1,5 +1,6 @@
 package good;
 
+import org.apache.commons.net.telnet.EchoOptionHandler;
 import org.jtransforms.dct.DoubleDCT_2D;
 
 import java.awt.image.BufferedImage;
@@ -25,11 +26,57 @@ public class Main {
         BufferedImage inputBufferedImage = imageOperations.readImage();
         int width=inputBufferedImage.getWidth(), height=inputBufferedImage.getHeight();
         viewImage.displayImage(inputBufferedImage,"Original",width,height);
+        List<BufferedImage> channels=imageOperations.extractColorChannels(inputBufferedImage);
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         Files.write(Paths.get("TimpRulare.txt"),("\nDate="+dateFormat.format(date)+"\n").getBytes(), StandardOpenOption.APPEND);
         Files.write(Paths.get("TimpRulare.txt"),("Width imagine="+width+" Height imagine="+height+"\n").getBytes(), StandardOpenOption.APPEND);
+
+
+        long startTime=System.currentTimeMillis();
+
+        Encryption encryption=new Encryption();
+        Decryption decryption=new Decryption();
+        List<Integer> secretKeyForBakerMap = encryption.generateSecretKey(width);
+        int[] arnoldParameters=encryption.generateRandomSequenceForArnoldTransform(1200);
+
+        BufferedImage criptare=encryption.doEncryption(inputBufferedImage,secretKeyForBakerMap,arnoldParameters[0],arnoldParameters[1]);
+
+        long endTime=System.currentTimeMillis();
+        NumberFormat formatter=new DecimalFormat("#0.00000");
+        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru criptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
+
+        viewImage.displayImage(criptare,"criptare",width,height);
+
+
+
+
+        startTime=System.currentTimeMillis();
+
+        BufferedImage decriptare=decryption.doDecryption(criptare,secretKeyForBakerMap,arnoldParameters[0],arnoldParameters[1]);
+
+        endTime=System.currentTimeMillis();
+        formatter=new DecimalFormat("#0.00000");
+        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
+        
+        viewImage.displayImage(decriptare,"decriptare",width,height);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -138,8 +185,24 @@ public class Main {
 //        System.out.println("decryptedImage in main="+decryptedImage.getRGB(0,1)+" "+decryptedImage.getRGB(1,0));
 //        viewImage.displayImage(decryptedImage,"decryptedImage",width,height);
 
-        
+
 
     }
+
+
+    public boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
+        if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
+            for (int x = 0; x < img1.getWidth(); x++) {
+                for (int y = 0; y < img1.getHeight(); y++) {
+                    if (img1.getRGB(x, y) != img2.getRGB(x, y))
+                        return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
 
 }

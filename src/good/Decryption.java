@@ -2,6 +2,7 @@ package good;
 
 import org.jtransforms.dct.DoubleDCT_2D;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -9,6 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Decryption {
+
+    public BufferedImage doDecryption(BufferedImage inputBufferedImage,List<Integer> secretKeyForBakerMap,int arnoldParameterA,
+                                      int arnoldParameterB){
+        int lenghtOfImage=inputBufferedImage.getWidth();
+        BufferedImage outputBufferedImage=arnoldDecryptionTransform(inputBufferedImage,arnoldParameterA,arnoldParameterB);
+        outputBufferedImage=decryptBakerMapVertical(outputBufferedImage,lenghtOfImage,secretKeyForBakerMap);
+        outputBufferedImage=decryptBakerMapOrizontal(outputBufferedImage,lenghtOfImage,secretKeyForBakerMap);
+        return outputBufferedImage;
+    }
 
     public double[][] imageToDouble(BufferedImage bufferedImage){
         int height=bufferedImage.getHeight(),width=bufferedImage.getWidth();
@@ -38,19 +48,44 @@ public class Decryption {
         return diffusionImage;
     }
 
-    public double[][] decryptBakerMap(double[][] inputBakerMap,int widthOfInputImage,int heightOfInputImage,List<Integer> secretKey) {
-        double[][] outputDecryptedBakerMap=new double[heightOfInputImage][widthOfInputImage];
-        int row=heightOfInputImage-1,col,height,offset=0;
+
+
+    public BufferedImage decryptBakerMapOrizontal(BufferedImage inputBakerMap,int widthOfInputImage,List<Integer> secretKey) {
+        BufferedImage outputDecryptedBakerMap=new BufferedImage(widthOfInputImage,widthOfInputImage,BufferedImage.TYPE_INT_RGB);
+        int row=widthOfInputImage-1,col,height,offset=0;
         for(int i=-1;++i<secretKey.size();){
             int valForSecretKey=secretKey.get(i);
-            height=heightOfInputImage/valForSecretKey;
-            int auxiliaryHeightOfImage=heightOfInputImage-1;
+            height=widthOfInputImage/valForSecretKey;
+            int auxiliaryHeightOfImage=widthOfInputImage-1;
             while(auxiliaryHeightOfImage>0){
                 col=0;
                 for(int coordY=offset;coordY<=offset+valForSecretKey-1;coordY++){
                     for(int coordX=auxiliaryHeightOfImage;coordX>=auxiliaryHeightOfImage-height+1;coordX--){
-                        //outputDecryptedBakerMap[coordX][coordY]=inputBakerMap.getRGB(row,col++);
-                        outputDecryptedBakerMap[coordX][coordY]=inputBakerMap[col++][row];
+                        outputDecryptedBakerMap.setRGB(coordY,coordX,inputBakerMap.getRGB(col++,row));
+                    }
+                }
+                row--;
+                auxiliaryHeightOfImage=auxiliaryHeightOfImage-height;
+            }
+            offset+=valForSecretKey;
+        }
+        return  outputDecryptedBakerMap;
+    }
+
+
+
+    public BufferedImage decryptBakerMapVertical(BufferedImage inputBakerMap,int widthOfInputImage,List<Integer> secretKey) {
+        BufferedImage outputDecryptedBakerMap=new BufferedImage(widthOfInputImage,widthOfInputImage,BufferedImage.TYPE_INT_RGB);
+        int row=widthOfInputImage-1,col,height,offset=0;
+        for(int i=-1;++i<secretKey.size();){
+            int valForSecretKey=secretKey.get(i);
+            height=widthOfInputImage/valForSecretKey;
+            int auxiliaryHeightOfImage=widthOfInputImage-1;
+            while(auxiliaryHeightOfImage>0){
+                col=0;
+                for(int coordY=offset;coordY<=offset+valForSecretKey-1;coordY++){
+                    for(int coordX=auxiliaryHeightOfImage;coordX>=auxiliaryHeightOfImage-height+1;coordX--){
+                        outputDecryptedBakerMap.setRGB(coordX,coordY,inputBakerMap.getRGB(col++,row));
                     }
                 }
                 row--;
@@ -140,6 +175,24 @@ public class Decryption {
             }
         }
         return outputImage;
+    }
+
+
+
+
+
+
+    public BufferedImage arnoldDecryptionTransform(BufferedImage inputBufferedImage,int a,int b){
+        int width=inputBufferedImage.getWidth();
+        BufferedImage outputBufferedImage=new BufferedImage(width,width,BufferedImage.TYPE_INT_RGB);
+        for(int i=0;i<width;i++){
+            for(int j=0;j<width;j++){
+                int aux1=(i-a*j)%width;
+                int aux2=(-b*i+j*(a*b+1))%width;
+                outputBufferedImage.setRGB((aux1%width + width)%width,(aux2%width + width)%width,inputBufferedImage.getRGB(i,j));
+            }
+        }
+        return outputBufferedImage;
     }
 
 }
