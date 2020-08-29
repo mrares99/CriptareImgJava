@@ -24,11 +24,7 @@ public class ImageOperations {
             } catch (IOException e) {
                 System.out.println("Calea spre imagine si/sau numele imaginii este gresit!");
             }
-        } else {
-            path= new File("Wrong path");
         }
-
-
         return image;
     }
 
@@ -53,5 +49,15 @@ public class ImageOperations {
         return bufferedImageList;
     }
 
+    public BufferedImage constructImageFromRGBChannels(BufferedImage firstImage, BufferedImage secondImage, BufferedImage thirdImage){
+        int width=firstImage.getWidth(),height=firstImage.getHeight();
+        BufferedImage outputImage=new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
+        for(int i=-1;++i<height;){
+            for(int j=-1;++j<width;){
+                outputImage.setRGB(j,i,firstImage.getRGB(j,i) | secondImage.getRGB(j,i) | thirdImage.getRGB(j,i));
+            }
+        }
+        return outputImage;
+    }
 
 }

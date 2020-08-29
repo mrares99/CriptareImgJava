@@ -796,3 +796,72 @@ Date=2020/08/25 13:55:16
 Width imagine=1024 Height imagine=1024
 Timpul total pentru criptare=0,19400 secunde
 Timpul total pentru decriptare=0,19800 secunde
+
+Date=2020/08/29 14:04:08
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,04700 secunde
+Timpul total pentru decriptare=0,02700 secunde
+
+Date=2020/08/29 14:04:25
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,04300 secunde
+Timpul total pentru decriptare=0,01800 secunde
+
+Date=2020/08/29 14:05:01
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,03600 secunde
+Timpul total pentru decriptare=0,01700 secunde
+
+Date=2020/08/29 14:29:51
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,06400 secunde
+Timpul total pentru decriptare=0,04400 secunde
+
+Date=2020/08/29 14:31:47
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,07100 secunde
+Timpul total pentru decriptare=0,04100 secunde
+
+Date=2020/08/29 14:31:58
+Width imagine=1024 Height imagine=1024
+Timpul total pentru criptare=0,64200 secunde
+Timpul total pentru decriptare=0,47000 secunde
+
+Date=2020/08/29 14:34:43
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,06700 secunde
+
+Date=2020/08/29 14:34:50
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,06500 secunde
+Timpul total pentru decriptare=0,04100 secunde
+
+Date=2020/08/29 14:34:58
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,06900 secunde
+Timpul total pentru decriptare=0,04200 secunde
+
+Date=2020/08/29 14:35:04
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,07700 secunde
+Timpul total pentru decriptare=0,04300 secunde
+
+Date=2020/08/29 14:35:42
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,06800 secunde
+Timpul total pentru decriptare=0,04200 secunde
+
+Date=2020/08/29 14:35:52
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,07500 secunde
+Timpul total pentru decriptare=0,04200 secunde
+
+Date=2020/08/29 14:36:05
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,07000 secunde
+Timpul total pentru decriptare=0,04100 secunde
+
+Date=2020/08/29 14:37:37
+Width imagine=220 Height imagine=220
+Timpul total pentru criptare=0,06900 secunde
+Timpul total pentru decriptare=0,03900 secunde

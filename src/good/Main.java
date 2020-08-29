@@ -1,8 +1,5 @@
 package good;
 
-import org.apache.commons.net.telnet.EchoOptionHandler;
-import org.jtransforms.dct.DoubleDCT_2D;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,193 +12,147 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InterruptedException {
 
-        ImageOperations imageOperations=new ImageOperations();
-        ViewImage viewImage=new ViewImage();
+        ImageOperations imageOperations = new ImageOperations();
+        ViewImage viewImage = new ViewImage();
         //Flower;PinkFlower;Daisy;Lenna;Owl;Roses;Smoke;Umbrellas
         BufferedImage inputBufferedImage = imageOperations.readImage();
-        int width=inputBufferedImage.getWidth(), height=inputBufferedImage.getHeight();
-        viewImage.displayImage(inputBufferedImage,"Original",width,height);
-        List<BufferedImage> channels=imageOperations.extractColorChannels(inputBufferedImage);
+        int width = inputBufferedImage.getWidth(), height = inputBufferedImage.getHeight();
+        viewImage.displayImage(inputBufferedImage, "Original", width, height);
+
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        Files.write(Paths.get("TimpRulare.txt"),("\nDate="+dateFormat.format(date)+"\n").getBytes(), StandardOpenOption.APPEND);
-        Files.write(Paths.get("TimpRulare.txt"),("Width imagine="+width+" Height imagine="+height+"\n").getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("TimpRulare.txt"), ("\nDate=" + dateFormat.format(date) + "\n").getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get("TimpRulare.txt"), ("Width imagine=" + width + " Height imagine=" + height + "\n").getBytes(), StandardOpenOption.APPEND);
 
 
-        long startTime=System.currentTimeMillis();
-
-        Encryption encryption=new Encryption();
-        Decryption decryption=new Decryption();
+        //criptare
+        long startTime = System.currentTimeMillis();
+        Encryption encryption = new Encryption();
         List<Integer> secretKeyForBakerMap = encryption.generateSecretKey(width);
-        int[] arnoldParameters=encryption.generateRandomSequenceForArnoldTransform(1200);
+        int seed=8567890;
 
-        BufferedImage criptare=encryption.doEncryption(inputBufferedImage,secretKeyForBakerMap,arnoldParameters[0],arnoldParameters[1]);
+        inputBufferedImage=encryption.generateBakerMapOrizontal(inputBufferedImage,width,secretKeyForBakerMap);
+        inputBufferedImage=encryption.generateBakerMapVertical(inputBufferedImage,width,secretKeyForBakerMap);
 
-        long endTime=System.currentTimeMillis();
-        NumberFormat formatter=new DecimalFormat("#0.00000");
-        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru criptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
+        List<BufferedImage> channels = imageOperations.extractColorChannels(inputBufferedImage);
 
-        viewImage.displayImage(criptare,"criptare",width,height);
+        int[] arnoldParameters = encryption.generateRandomSequenceForArnoldTransform(seed);
 
+        ParallelEncryption parallelEncryption=new ParallelEncryption();
+        ExecutorService executorService= Executors.newFixedThreadPool(3);
 
-
-
-        startTime=System.currentTimeMillis();
-
-        BufferedImage decriptare=decryption.doDecryption(criptare,secretKeyForBakerMap,arnoldParameters[0],arnoldParameters[1]);
-
-        endTime=System.currentTimeMillis();
-        formatter=new DecimalFormat("#0.00000");
-        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
-        
-        viewImage.displayImage(decriptare,"decriptare",width,height);
+        parallelEncryption.setArnoldParameterA(arnoldParameters[0]);
+        parallelEncryption.setArnoldParameterB(arnoldParameters[1]);
+        parallelEncryption.setColorChannel(channels.get(0));
+        executorService.execute(parallelEncryption);
 
 
+        parallelEncryption=new ParallelEncryption();
+        parallelEncryption.setArnoldParameterA(arnoldParameters[2]);
+        parallelEncryption.setArnoldParameterB(arnoldParameters[3]);
+        parallelEncryption.setColorChannel(channels.get(1));
+        executorService.execute(parallelEncryption);
+
+
+        parallelEncryption=new ParallelEncryption();
+        parallelEncryption.setArnoldParameterA(arnoldParameters[4]);
+        parallelEncryption.setArnoldParameterB(arnoldParameters[5]);
+        parallelEncryption.setColorChannel(channels.get(2));
+        executorService.execute(parallelEncryption);
+
+
+        executorService.shutdown();
+        executorService.awaitTermination(10, TimeUnit.MINUTES);
+
+
+        List<BufferedImage> outputEncryptedImages=parallelEncryption.getOutputEncryptedImageList();
+        BufferedImage encryptedImage=imageOperations.constructImageFromRGBChannels(outputEncryptedImages.get(0),
+                outputEncryptedImages.get(1),outputEncryptedImages.get(2));
 
 
 
+        long endTime = System.currentTimeMillis();
+        NumberFormat formatter = new DecimalFormat("#0.00000");
+        Files.write(Paths.get("TimpRulare.txt"), ("Timpul total pentru criptare=" + formatter.format((endTime - startTime) / 1000d) + " secunde\n").getBytes(), StandardOpenOption.APPEND);
 
+        viewImage.displayImage(encryptedImage, "encryptedImage", width, height);
 
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//        long startTime=System.currentTimeMillis();
-//
-//        //criptare
-//
-//        Encryption encryption=new Encryption();
-//        List<Integer> secretKeyForBakerMap = encryption.generateSecretKey(width);
-//
-//        double[][] DCTImage=encryption.imageToDouble(inputBufferedImage);
-//        DCTImage=encryption.createDCTofImage(DCTImage,height,width);
-//        int k=1,x0=2,y0=3,n1=4,k1=5,x10=6,y10=7,n11=8;
-//        double mean=0,variance=0.5;
-//        long key = encryption.generateKey(k, x0, y0, n1, k1, x10, y10, n11);
-//        double[][] diffusionImage=encryption.generateDiffusionImage(key,mean,variance,height,width);
-//        //creare baker's map
-//        DCTImage=encryption.generateBakerMap(DCTImage,width,height,secretKeyForBakerMap);
-//        diffusionImage=encryption.generateBakerMap(diffusionImage,width,height,secretKeyForBakerMap);
-//        //xor dct cu diffusion
-//        diffusionImage=encryption.XORTwoImages(DCTImage,diffusionImage,height,width,n1);
-//        //afisarea imaginii criptate
-//        BufferedImage encryptedImage=encryption.generateBufferedImageFromDoubleValues(diffusionImage,height,width);
-//        viewImage.displayImage(encryptedImage,"encrypted",width,height);
-//
-//        //terminare criptare
-//
-//        long endTime=System.currentTimeMillis();
-//        NumberFormat formatter=new DecimalFormat("#0.00000");
-//        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru criptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//        startTime=System.currentTimeMillis();
-//
-//        //decriptare
-//
-//        Decryption decryption=new Decryption();
-//        secretKeyForBakerMap = decryption.generateSecretKey(width);
-//        //generez diffusion map pe baza cheii/variance/etc
-//        diffusionImage=decryption.generateDiffusionImage(key,mean,variance,height,width);
-//        diffusionImage=decryption.generateBakerMap(diffusionImage,width,height,secretKeyForBakerMap);
-//        DCTImage=decryption.XORTwoImages(diffusionImage,decryption.imageToDouble(encryptedImage),height,width,n1);
-//        //decriptez baker's map
-//        DCTImage=decryption.decryptBakerMap(DCTImage,width,height,secretKeyForBakerMap);
-//        //creez IDCT
-//        DCTImage=decryption.createIDCTofImage(DCTImage,height,width);
-//        BufferedImage decryptedImage=decryption.generateBufferedImageFromDoubleValues(DCTImage,height,width);
-//        viewImage.displayImage(decryptedImage,"decrypted",width,height);
-//
-//        //terminare decriptare
-//
-//        endTime=System.currentTimeMillis();
-//        formatter=new DecimalFormat("#0.00000");
-//        Files.write(Paths.get("TimpRulare.txt"),("Timpul total pentru decriptare="+formatter.format((endTime-startTime)/1000d)+" secunde\n").getBytes(), StandardOpenOption.APPEND);
+        //terminare criptare
 
 
 
 
 
-//        double value=9.803402725149393e10;
-//        int conv=(int)value;
-//        System.out.println("double to int="+conv);
-//
-//
-//        DoubleDCT_2D doubleDCT_2D=new DoubleDCT_2D(height,width);
-//
-//        Encryption encryption=new Encryption();
-//        List<Integer> secretKeyForBakerMap = encryption.generateSecretKey(width);
-//        System.out.println("buffered image in main="+inputBufferedImage.getRGB(0,1)+" "+inputBufferedImage.getRGB(1,0));
-//        double[][] imageDouble=encryption.imageToDouble(inputBufferedImage);
-//        System.out.println("inainte de dct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
-//        imageDouble=encryption.createDCTofImage(imageDouble,height,width);
-//        System.out.println("dct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
-//
-//        System.out.println("dct to int in main="+(int)imageDouble[0][1]);
-//
-//        BufferedImage encryptedImage=encryption.generateBufferedImageFromDoubleValues(imageDouble,height,width);
-//
-//        System.out.println("encrypted in main="+encryptedImage.getRGB(0,1)+" "+encryptedImage.getRGB(1,0));
-//
-//        viewImage.displayImage(encryptedImage,"encryptedImage",width,height);
-//
-//
-//
-//        System.out.println("\n================== de aici e decriptarea====================\n");
-//
-//
-//
-//        Decryption decryption=new Decryption();
-//        System.out.println("encryptedImage in main="+encryptedImage.getRGB(0,1)+" "+encryptedImage.getRGB(1,0));
-//        imageDouble=decryption.imageToDouble(encryptedImage);
-//        System.out.println("inainte de idct in main=(0,1)"+imageDouble[0][1]+"   (1,0)="+imageDouble[1][0]);
-//        imageDouble=decryption.createIDCTofImage(imageDouble,height,width);
-//        System.out.println("idct in main="+imageDouble[0][1]+" "+imageDouble[1][0]);
-//        BufferedImage decryptedImage=decryption.generateBufferedImageFromDoubleValues(imageDouble,height,width);
-//        System.out.println("decryptedImage in main="+decryptedImage.getRGB(0,1)+" "+decryptedImage.getRGB(1,0));
-//        viewImage.displayImage(decryptedImage,"decryptedImage",width,height);
+
+
+        //decriptare
+
+        startTime = System.currentTimeMillis();
+
+
+        Decryption decryption=new Decryption();
+        secretKeyForBakerMap = decryption.generateSecretKey(width);
+
+        channels = imageOperations.extractColorChannels(encryptedImage);
+
+        arnoldParameters = decryption.generateRandomSequenceForArnoldTransform(seed);
+
+        ParallelDecryption parallelDecryption=new ParallelDecryption();
+        executorService= Executors.newFixedThreadPool(3);
+
+        parallelDecryption.setArnoldParameterA(arnoldParameters[0]);
+        parallelDecryption.setArnoldParameterB(arnoldParameters[1]);
+        parallelDecryption.setColorChannel(channels.get(0));
+        executorService.execute(parallelDecryption);
+
+
+        parallelDecryption=new ParallelDecryption();
+        parallelDecryption.setArnoldParameterA(arnoldParameters[2]);
+        parallelDecryption.setArnoldParameterB(arnoldParameters[3]);
+        parallelDecryption.setColorChannel(channels.get(1));
+        executorService.execute(parallelDecryption);
+
+
+        parallelDecryption=new ParallelDecryption();
+        parallelDecryption.setArnoldParameterA(arnoldParameters[4]);
+        parallelDecryption.setArnoldParameterB(arnoldParameters[5]);
+        parallelDecryption.setColorChannel(channels.get(2));
+        executorService.execute(parallelDecryption);
+
+        executorService.shutdown();
+        executorService.awaitTermination(10, TimeUnit.MINUTES);
+
+
+        outputEncryptedImages=parallelDecryption.getOutputEncryptedImageList();
+        BufferedImage decryptedImage=imageOperations.constructImageFromRGBChannels(outputEncryptedImages.get(0),
+                outputEncryptedImages.get(1),outputEncryptedImages.get(2));
+
+
+        decryptedImage=decryption.decryptBakerMapVertical(decryptedImage,width,secretKeyForBakerMap);
+        decryptedImage=decryption.decryptBakerMapOrizontal(decryptedImage,width,secretKeyForBakerMap);
+
+
+        endTime = System.currentTimeMillis();
+        formatter = new DecimalFormat("#0.00000");
+        Files.write(Paths.get("TimpRulare.txt"), ("Timpul total pentru decriptare=" + formatter.format((endTime - startTime) / 1000d) + " secunde\n").getBytes(), StandardOpenOption.APPEND);
 
 
 
-    }
+        viewImage.displayImage(decryptedImage, "decryptedImage", width, height);
 
 
-    public boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
-        if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
-            for (int x = 0; x < img1.getWidth(); x++) {
-                for (int y = 0; y < img1.getHeight(); y++) {
-                    if (img1.getRGB(x, y) != img2.getRGB(x, y))
-                        return false;
-                }
-            }
-        } else {
-            return false;
-        }
-        return true;
+        //terminare decriptare
+
+
     }
 
 
