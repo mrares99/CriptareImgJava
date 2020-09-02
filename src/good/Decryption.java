@@ -103,8 +103,8 @@ public class Decryption {
     public BufferedImage arnoldDecryptionTransform(BufferedImage inputBufferedImage,int a,int b){
         int width=inputBufferedImage.getWidth();
         BufferedImage outputBufferedImage=new BufferedImage(width,width,BufferedImage.TYPE_INT_RGB);
-        for(int i=0;i<width;i++){
-            for(int j=0;j<width;j++){
+        for(int i=-1;++i<width;){
+            for(int j=-1;++j<width;){
                 int aux1=(i-a*j)%width;
                 int aux2=(-b*i+j*(a*b+1))%width;
                 outputBufferedImage.setRGB((aux1%width + width)%width,(aux2%width + width)%width,inputBufferedImage.getRGB(i,j));
